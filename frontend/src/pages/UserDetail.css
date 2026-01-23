@@ -1,0 +1,415 @@
+.page {
+  padding: 32px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.page h1 {
+  margin: 0 0 16px;
+  font-size: 32px;
+  color: #d4af37;
+  font-weight: bold;
+}
+
+.page p {
+  margin: 0;
+  color: #aaa;
+  font-size: 14px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #333;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #d4af37;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.back-link:hover {
+  color: #f4c430;
+}
+
+.loading {
+  text-align: center;
+  padding: 64px;
+  color: #aaa;
+  font-size: 16px;
+}
+
+.user-detail-page {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.user-detail-content {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 32px;
+}
+
+.user-info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.user-basic-info .info-card {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.user-basic-info h3 {
+  margin: 0 0 20px;
+  color: #d4af37;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.info-item label {
+  font-size: 12px;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+.info-item span {
+  font-size: 14px;
+  color: #fff;
+  font-weight: 500;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.status-badge.active {
+  background: #28a745;
+  color: white;
+}
+
+.status-badge.suspended {
+  background: #ffc107;
+  color: black;
+}
+
+.status-badge.banned {
+  background: #dc3545;
+  color: white;
+}
+
+.status-badge.pending {
+  background: #6c757d;
+  color: white;
+}
+
+.status-badge.not-paid {
+  background: #dc3545;
+  color: white;
+}
+
+.status-badge.paid {
+  background: #28a745;
+  color: white;
+}
+
+.user-statistics {
+  margin-top: 24px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.stat-card {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+}
+
+.stat-card h4 {
+  margin: 0 0 8px;
+  color: #d4af37;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  margin: 0;
+}
+
+.user-communication-section {
+  grid-column: 2;
+}
+
+.communication-card {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 24px;
+  position: sticky;
+  top: 32px;
+}
+
+.communication-card h3 {
+  margin: 0 0 20px;
+  color: #d4af37;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.message-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.message-form textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 12px;
+  background: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 14px;
+  resize: vertical;
+}
+
+.message-form textarea:focus {
+  outline: none;
+  border-color: #d4af37;
+}
+
+.send-message-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: #d4af37;
+  color: black;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.send-message-btn:hover:not(:disabled) {
+  background: #f4c430;
+}
+
+.send-message-btn:disabled {
+  background: #666;
+  cursor: not-allowed;
+}
+
+.message-sent {
+  padding: 8px 12px;
+  background: #28a745;
+  color: white;
+  border-radius: 4px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.user-data-section {
+  grid-column: 1 / -1;
+  margin-top: 32px;
+}
+
+.data-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #333;
+}
+
+.data-tabs button {
+  padding: 12px 24px;
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+}
+
+.data-tabs button.active {
+  color: #d4af37;
+  border-bottom-color: #d4af37;
+}
+
+.data-tabs button:hover {
+  color: #fff;
+}
+
+.data-content {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.data-table {
+  width: 100%;
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 16px;
+  padding: 16px 24px;
+  background: #2a2a2a;
+  border-bottom: 1px solid #333;
+  font-size: 12px;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: bold;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 16px;
+  padding: 16px 24px;
+  border-bottom: 1px solid #333;
+  transition: background 0.2s;
+}
+
+.table-row:last-child {
+  border-bottom: none;
+}
+
+.table-row:hover {
+  background: #2a2a2a;
+}
+
+.table-row div {
+  font-size: 14px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.payments-list h4,
+.referrals-list h4 {
+  margin: 0 0 16px;
+  color: #d4af37;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.referrals-list {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .user-detail-content {
+    grid-template-columns: 1fr;
+  }
+
+  .user-communication-section {
+    grid-column: 1;
+  }
+
+  .user-data-section {
+    grid-column: 1;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .table-header,
+  .table-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .table-row div:nth-child(3),
+  .table-row div:nth-child(4) {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: 16px;
+  }
+
+  .page h1 {
+    font-size: 24px;
+  }
+
+  .user-detail-content {
+    gap: 16px;
+  }
+
+  .info-card,
+  .communication-card {
+    padding: 16px;
+  }
+
+  .stat-card {
+    padding: 16px;
+  }
+
+  .table-header,
+  .table-row {
+    padding: 12px 16px;
+  }
+}
