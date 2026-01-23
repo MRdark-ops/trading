@@ -1,0 +1,663 @@
+/* ============================================
+   SUBSCRIPTION PAYMENT PAGE STYLES
+   ============================================ */
+
+.subscription-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  padding: 40px 20px;
+  direction: rtl;
+  text-align: right;
+}
+
+.subscription-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   HEADER SECTION
+   ============================================ */
+
+.payment-header {
+  text-align: center;
+  margin-bottom: 50px;
+  animation: slideDown 0.6s ease-out;
+}
+
+.payment-header h1 {
+  font-size: 42px;
+  font-weight: 700;
+  color: #d4af37;
+  margin: 0 0 10px;
+  text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+}
+
+.payment-header p {
+  font-size: 18px;
+  color: #888;
+  margin: 0;
+}
+
+/* ============================================
+   PROGRESS INDICATOR
+   ============================================ */
+
+.progress-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 50px;
+  position: relative;
+  padding: 20px 0;
+}
+
+.progress-container::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to left, #d4af37 0%, rgba(212, 175, 55, 0.2) 100%);
+  z-index: 0;
+  transform: translateY(-50%);
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  z-index: 1;
+  flex: 1;
+}
+
+.step-number {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 20px;
+  transition: all 0.3s ease;
+  background: #1a1a1a;
+  border: 2px solid #333;
+  color: #888;
+}
+
+.progress-step.active .step-number {
+  background: linear-gradient(135deg, #d4af37 0%, #b8920e 100%);
+  border-color: #d4af37;
+  color: #0a0a0a;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+}
+
+.progress-step.completed .step-number {
+  background: #2ed573;
+  border-color: #2ed573;
+  color: #0a0a0a;
+}
+
+.step-label {
+  font-size: 13px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.progress-step.active .step-label,
+.progress-step.completed .step-label {
+  color: #d4af37;
+}
+
+/* ============================================
+   STEP CONTENT
+   ============================================ */
+
+.step-content {
+  background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+  border: 2px solid #d4af37;
+  border-radius: 15px;
+  padding: 40px;
+  animation: slideIn 0.4s ease-out;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.step-title {
+  font-size: 28px;
+  color: #d4af37;
+  margin: 0 0 20px;
+  text-align: right;
+}
+
+.step-description {
+  font-size: 15px;
+  color: #aaa;
+  margin: 0 0 30px;
+  line-height: 1.6;
+  text-align: right;
+}
+
+/* ============================================
+   STEP 1: WALLET ADDRESS
+   ============================================ */
+
+.wallet-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+  justify-content: center;
+}
+
+.wallet-info {
+  background: rgba(212, 175, 55, 0.05);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: right;
+}
+
+.wallet-info strong {
+  display: block;
+  color: #d4af37;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.wallet-address {
+  background: #0a0a0a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 15px;
+  font-family: 'Courier New', monospace;
+  color: #2ed573;
+  font-size: 13px;
+  word-break: break-all;
+  margin: 10px 0;
+  direction: ltr;
+  text-align: left;
+}
+
+.copy-button {
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #d4af37 0%, #b8920e 100%);
+  color: #0a0a0a;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+  width: 100%;
+  font-size: 15px;
+}
+
+.copy-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+}
+
+.copy-button:active {
+  transform: translateY(0);
+}
+
+.copy-success {
+  color: #2ed573;
+  font-weight: 700;
+}
+
+.payment-details {
+  background: linear-gradient(135deg, rgba(46, 213, 115, 0.1) 0%, rgba(46, 213, 115, 0.05) 100%);
+  border: 1px solid rgba(46, 213, 115, 0.3);
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.payment-details h4 {
+  margin: 0 0 15px;
+  color: #2ed573;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.payment-detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(46, 213, 115, 0.2);
+}
+
+.payment-detail-item:last-child {
+  border-bottom: none;
+}
+
+.payment-detail-label {
+  color: #aaa;
+}
+
+.payment-detail-value {
+  color: #2ed573;
+  font-weight: 700;
+}
+
+/* ============================================
+   STEP 2: TX HASH VERIFICATION
+   ============================================ */
+
+.tx-section {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  flex: 1;
+  justify-content: center;
+}
+
+.tx-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tx-input-group label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #d4af37;
+}
+
+.tx-input {
+  width: 100%;
+  padding: 15px 20px;
+  background: #0a0a0a;
+  border: 2px solid #333;
+  border-radius: 10px;
+  color: #fff;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  direction: ltr;
+  text-align: left;
+  transition: all 0.3s ease;
+}
+
+.tx-input:focus {
+  outline: none;
+  border-color: #d4af37;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+.tx-input::placeholder {
+  color: #666;
+}
+
+.tx-help {
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 8px;
+  padding: 12px 15px;
+  font-size: 13px;
+  color: #aaa;
+  line-height: 1.6;
+  text-align: right;
+}
+
+.tx-help strong {
+  color: #00d4ff;
+}
+
+/* ============================================
+   STEP 3: SUCCESS CONFIRMATION
+   ============================================ */
+
+.success-section {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  justify-content: center;
+}
+
+.success-icon {
+  font-size: 80px;
+  color: #2ed573;
+  animation: scaleIn 0.6s ease-out;
+}
+
+.success-message {
+  color: #2ed573;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.success-description {
+  color: #aaa;
+  font-size: 15px;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.success-details {
+  background: linear-gradient(135deg, rgba(46, 213, 115, 0.1) 0%, rgba(46, 213, 115, 0.05) 100%);
+  border: 1px solid rgba(46, 213, 115, 0.3);
+  border-radius: 10px;
+  padding: 20px;
+  width: 100%;
+  text-align: right;
+}
+
+.success-detail {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(46, 213, 115, 0.2);
+}
+
+.success-detail:last-child {
+  border-bottom: none;
+}
+
+.success-detail-label {
+  color: #aaa;
+}
+
+.success-detail-value {
+  color: #2ed573;
+  font-weight: 700;
+}
+
+.telegram-link {
+  display: inline-block;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #0088cc 0%, #004488 100%);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.telegram-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 136, 204, 0.4);
+}
+
+/* ============================================
+   BUTTONS SECTION
+   ============================================ */
+
+.buttons-container {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: auto;
+}
+
+.btn {
+  padding: 15px 30px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 150px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #d4af37 0%, #b8920e 100%);
+  color: #0a0a0a;
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: #333;
+  color: #d4af37;
+  border: 2px solid #d4af37;
+}
+
+.btn-secondary:hover {
+  background: rgba(212, 175, 55, 0.1);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #2ed573 0%, #1e9b4a 100%);
+  color: #0a0a0a;
+}
+
+.btn-success:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(46, 213, 115, 0.4);
+}
+
+.spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(10, 10, 10, 0.3);
+  border-radius: 50%;
+  border-top-color: #0a0a0a;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   ALERTS
+   ============================================ */
+
+.alert {
+  padding: 15px 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  animation: slideIn 0.4s ease-out;
+}
+
+.alert-success {
+  background: rgba(46, 213, 115, 0.1);
+  border: 1px solid rgba(46, 213, 115, 0.3);
+  color: #2ed573;
+}
+
+.alert-error {
+  background: rgba(231, 76, 60, 0.1);
+  border: 1px solid rgba(231, 76, 60, 0.3);
+  color: #e74c3c;
+}
+
+.alert-info {
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  color: #00d4ff;
+}
+
+.alert-warning {
+  background: rgba(255, 165, 0, 0.1);
+  border: 1px solid rgba(255, 165, 0, 0.3);
+  color: #FFA500;
+}
+
+.alert-text {
+  flex: 1;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+  .subscription-page {
+    padding: 20px 15px;
+  }
+
+  .payment-header h1 {
+    font-size: 32px;
+  }
+
+  .step-content {
+    padding: 30px 20px;
+    min-height: auto;
+  }
+
+  .step-title {
+    font-size: 22px;
+  }
+
+  .buttons-container {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .progress-container {
+    gap: 10px;
+    padding: 15px 0;
+  }
+
+  .step-number {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .step-label {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .subscription-page {
+    padding: 15px 10px;
+  }
+
+  .subscription-container {
+    max-width: 100%;
+  }
+
+  .payment-header h1 {
+    font-size: 24px;
+  }
+
+  .payment-header p {
+    font-size: 14px;
+  }
+
+  .step-content {
+    padding: 20px 15px;
+  }
+
+  .step-title {
+    font-size: 20px;
+  }
+
+  .step-description {
+    font-size: 13px;
+  }
+
+  .buttons-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn {
+    padding: 12px 20px;
+    font-size: 13px;
+  }
+
+  .wallet-address {
+    font-size: 11px;
+  }
+
+  .success-icon {
+    font-size: 60px;
+  }
+
+  .success-message {
+    font-size: 20px;
+  }
+
+  .telegram-link {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+}
