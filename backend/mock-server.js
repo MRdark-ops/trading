@@ -106,6 +106,8 @@ const verifyToken = (req, res, next) => {
 };
 
 // Admin Only Middleware
+let users;
+
 const adminOnly = (req, res, next) => {
   if (req.user.role !== 'admin') {
     securityMonitor.addSuspiciousActivity(
