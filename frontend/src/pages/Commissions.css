@@ -139,7 +139,7 @@
   .commissions-content {
     grid-template-columns: 1fr;
   }
-  
+
   .table-header,
   .table-row {
     grid-template-columns: 1fr;

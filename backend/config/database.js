@@ -1,4 +1,4 @@
-const { Sequelize } = require('sequelize');
+const { Sequelize } = require('sequelize')
 
 const sequelize = new Sequelize(
   process.env.DB_NAME || 'trading_platform_db',
@@ -16,10 +16,11 @@ const sequelize = new Sequelize(
       idle: 10000
     }
   }
-);
+)
 
-sequelize.authenticate()
+sequelize
+  .authenticate()
   .then(() => console.log('Database connected successfully'))
-  .catch(err => console.error('Unable to connect to database:', err));
+  .catch((err) => console.error('Unable to connect to database:', err))
 
-module.exports = sequelize;
+module.exports = sequelize

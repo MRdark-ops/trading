@@ -1,6 +1,7 @@
 # Trading DZ Platform - Complete Setup Guide
 
 ## 📋 Table of Contents
+
 1. [System Architecture](#system-architecture)
 2. [Backend Setup](#backend-setup)
 3. [Website Setup](#website-setup)
@@ -45,24 +46,28 @@
 ### Components
 
 **Frontend (Customer Website)**
+
 - React 18 + Vite
 - Location: `/website`
 - Port: 3000
 - Features: Auth, Dashboard, Payments, Referrals
 
 **Admin Dashboard**
+
 - React 18
 - Location: `/frontend`
 - Port: 3001 (configurable)
 - Features: User management, Payment verification, Analytics
 
 **Backend API**
+
 - Node.js + Express
 - Location: `/backend`
 - Port: 5000
 - Features: Authentication, User management, Payments, Referrals, Commissions
 
 **Database**
+
 - PostgreSQL
 - Sequelize ORM
 - Models: User, Payment, Referral, Commission, Withdrawal, AdminLog
@@ -72,6 +77,7 @@
 ## 🚀 Backend Setup
 
 ### Prerequisites
+
 ```bash
 Node.js 16+
 PostgreSQL 12+
@@ -81,16 +87,19 @@ npm or yarn
 ### Installation
 
 1. **Navigate to backend directory**
+
 ```bash
 cd backend
 ```
 
 2. **Install dependencies**
+
 ```bash
 npm install
 ```
 
 3. **Create .env file**
+
 ```env
 # Server
 PORT=5000
@@ -122,6 +131,7 @@ TELEGRAM_CHANNEL_ID=your_channel_id
 ```
 
 4. **Setup database**
+
 ```bash
 # Create database
 createdb trading_dz
@@ -131,6 +141,7 @@ npx sequelize-cli db:migrate
 ```
 
 5. **Start backend**
+
 ```bash
 # Development with auto-reload
 npm run dev
@@ -148,6 +159,7 @@ curl http://localhost:5000/api/health
 ```
 
 Expected response:
+
 ```json
 { "status": "OK" }
 ```
@@ -157,6 +169,7 @@ Expected response:
 ## 💻 Website Setup
 
 ### Prerequisites
+
 ```bash
 Node.js 16+
 npm or yarn
@@ -166,22 +179,26 @@ Backend running on port 5000
 ### Installation
 
 1. **Navigate to website directory**
+
 ```bash
 cd website
 ```
 
 2. **Install dependencies**
+
 ```bash
 npm install
 ```
 
 3. **Create .env.development**
+
 ```env
 VITE_API_URL=http://localhost:5000/api
 VITE_APP_NAME=Trading DZ
 ```
 
 4. **Start development server**
+
 ```bash
 npm run dev
 ```
@@ -198,12 +215,14 @@ npm run build
 ### Environment Variables
 
 **Development (.env.development)**
+
 ```env
 VITE_API_URL=http://localhost:5000/api
 VITE_APP_NAME=Trading DZ
 ```
 
 **Production (.env.production)**
+
 ```env
 VITE_API_URL=https://api.tradingdz.com/api
 VITE_APP_NAME=Trading DZ
@@ -216,6 +235,7 @@ VITE_APP_NAME=Trading DZ
 ### PostgreSQL Setup
 
 1. **Install PostgreSQL**
+
 ```bash
 # Ubuntu/Debian
 sudo apt-get install postgresql postgresql-contrib
@@ -228,6 +248,7 @@ brew install postgresql
 ```
 
 2. **Create database and user**
+
 ```sql
 -- Connect to PostgreSQL
 psql -U postgres
@@ -272,6 +293,7 @@ The following tables are created automatically by Sequelize:
 ### USDT Wallet Configuration
 
 1. **Set wallet address in backend .env**
+
 ```env
 ADMIN_WALLET_ADDRESS=0x22951c64910503f0825fd15667918c6bf0dce1ed
 ```
@@ -284,6 +306,7 @@ ADMIN_WALLET_ADDRESS=0x22951c64910503f0825fd15667918c6bf0dce1ed
    - User gains access to dashboard and Telegram
 
 ### Supported Blockchains
+
 - **Ethereum (ERC20)**
 - **Tron (TRC20)**
 - **Binance Smart Chain (BEP20)**
@@ -307,6 +330,7 @@ ADMIN_WALLET_ADDRESS=0x22951c64910503f0825fd15667918c6bf0dce1ed
 ### Automated Verification (Future)
 
 For automated verification, implement Blockchain API:
+
 - Etherscan API
 - TronGrid API
 - QuickNode
@@ -323,6 +347,7 @@ For automated verification, implement Blockchain API:
    - Copy bot token
 
 2. **Configure Backend**
+
 ```env
 TELEGRAM_BOT_TOKEN=your_bot_token_here
 TELEGRAM_CHANNEL_ID=your_channel_id_here
@@ -347,6 +372,7 @@ TELEGRAM_CHANNEL_ID=your_channel_id_here
 ### Send Invite Link
 
 When user completes payment:
+
 ```javascript
 // Backend sends this via API
 const inviteLink = await telegram.createChatInviteLink(channelId);
@@ -360,6 +386,7 @@ sendToUser(inviteLink);
 ### Option 1: Vercel (Recommended for Frontend)
 
 **Deploy Website**
+
 ```bash
 npm install -g vercel
 cd website
@@ -367,6 +394,7 @@ vercel
 ```
 
 Environment variables in Vercel dashboard:
+
 ```
 VITE_API_URL=https://api.tradingdz.com/api
 ```
@@ -374,6 +402,7 @@ VITE_API_URL=https://api.tradingdz.com/api
 ### Option 2: Heroku (Backend)
 
 **Deploy Backend**
+
 ```bash
 # Login to Heroku
 heroku login
@@ -392,8 +421,9 @@ git push heroku main
 ### Option 3: Docker (Full Stack)
 
 **Create docker-compose.yml**
+
 ```yaml
-version: '3.8'
+version: "3.8"
 services:
   postgres:
     image: postgres:14
@@ -428,6 +458,7 @@ volumes:
 ```
 
 **Run with Docker**
+
 ```bash
 docker-compose up -d
 ```
@@ -454,6 +485,7 @@ npm run test:coverage
    - File: `backend/postman_collection.json`
 
 2. **Register User**
+
    ```
    POST /api/auth/register
    Body: {
@@ -466,6 +498,7 @@ npm run test:coverage
    ```
 
 3. **Login**
+
    ```
    POST /api/auth/login
    Body: {
@@ -505,17 +538,20 @@ npm run test:coverage
 ### Backend Monitoring
 
 1. **Log Files**
+
 ```bash
 # View logs
 tail -f backend/logs/app.log
 ```
 
 2. **Health Check**
+
 ```bash
 curl http://localhost:5000/api/health
 ```
 
 3. **Database Queries**
+
 ```sql
 -- Check active connections
 SELECT datname, count(*) FROM pg_stat_activity GROUP BY datname;
@@ -529,6 +565,7 @@ ORDER BY pg_total_relation_size(schemaname||'.'||tablename) DESC;
 ### Performance Metrics
 
 Monitor these KPIs:
+
 - User registrations per day
 - Payment conversion rate
 - Average time to payment verification
@@ -538,6 +575,7 @@ Monitor these KPIs:
 ### Error Monitoring
 
 Use services like:
+
 - **Sentry** - Error tracking
 - **LogRocket** - Frontend monitoring
 - **DataDog** - Full stack monitoring
@@ -549,6 +587,7 @@ Use services like:
 ### Backend Issues
 
 **Database Connection Failed**
+
 ```bash
 # Check PostgreSQL is running
 sudo service postgresql status
@@ -558,6 +597,7 @@ psql -U trading_dz_user -d trading_dz -h localhost
 ```
 
 **JWT Token Invalid**
+
 ```bash
 # Regenerate secret in .env
 JWT_SECRET=new_random_secret_32_chars_minimum
@@ -567,6 +607,7 @@ npm run dev
 ```
 
 **Port Already in Use**
+
 ```bash
 # Find process on port 5000
 lsof -i :5000
@@ -578,49 +619,59 @@ kill -9 <PID>
 ### Frontend Issues
 
 **CORS Error**
+
 ```
 Access to XMLHttpRequest blocked by CORS policy
 ```
 
 Solution: Backend must have CORS enabled
+
 ```javascript
 // In backend/server.js
-app.use(cors({
-  origin: 'http://localhost:3000',
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  }),
+);
 ```
 
 **API Timeout**
+
 ```
 Request timeout at http://localhost:5000/api/...
 ```
 
 Solution: Check backend is running
+
 ```bash
 curl http://localhost:5000/api/health
 ```
 
 **Token Expired**
+
 ```
 { "error": "Token expired" }
 ```
 
 Solution: User must login again
+
 ```javascript
 // Clear localStorage and redirect to /login
 localStorage.clear();
-window.location.href = '/login';
+window.location.href = "/login";
 ```
 
 ### Database Issues
 
 **Connection Pool Exhausted**
+
 ```
 connect ECONNREFUSED 127.0.0.1:5432
 ```
 
 Solution: Increase pool size in backend/config/config.js
+
 ```javascript
 pool: {
   max: 10,
@@ -656,6 +707,7 @@ Before production:
 ## 📞 Support
 
 For issues or questions:
+
 - **Email**: support@tradingdz.com
 - **Telegram**: @TradingDZSupport
 - **Documentation**: https://docs.tradingdz.com

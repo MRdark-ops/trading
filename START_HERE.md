@@ -12,12 +12,14 @@ node mock-server.js
 ```
 
 **النتيجة المتوقعة:**
+
 ```
 ✅ Server running on port 5001
 ✅ Security system initialized
 ```
 
 **إذا لم يعمل:**
+
 ```powershell
 # ثبّت npm packages
 npm install
@@ -41,6 +43,7 @@ curl -X POST http://localhost:5001/api/auth/login `
 ```
 
 **يجب أن ترى:**
+
 ```json
 {
   "success": true,
@@ -66,6 +69,7 @@ curl -X GET http://localhost:5001/api/security/status `
 ```
 
 **يجب أن ترى:**
+
 ```json
 {
   "success": true,
@@ -174,6 +178,7 @@ curl -X POST http://localhost:5001/api/auth/login ...
 ## 🎓 ماذا تعني النتائج
 
 ### في الخطوة 2 (Login):
+
 ```javascript
 {
   "token": "a7f3e2d1..." // ← استخدم هذا في كل طلب
@@ -182,6 +187,7 @@ curl -X POST http://localhost:5001/api/auth/login ...
 ```
 
 ### في الخطوة 3 (Security Status):
+
 ```javascript
 {
   "totalActivities": 1234,      // ← عدد الأنشطة المسجلة
@@ -197,9 +203,9 @@ curl -X POST http://localhost:5001/api/auth/login ...
 
 ### مسؤولون (Admin)
 
-| البريد | كلمة المرور |
-|--------|-------------|
-| admin@tradingdz.com | admin123456 |
+| البريد                | كلمة المرور  |
+| --------------------- | ------------ |
+| admin@tradingdz.com   | admin123456  |
 | support@tradingdz.com | support12345 |
 | manager@tradingdz.com | manager12345 |
 

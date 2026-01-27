@@ -1,6 +1,6 @@
 // Seed data for development and testing
-const { v4: uuidv4 } = require('uuid');
-const bcrypt = require('bcryptjs');
+const { v4: uuidv4 } = require('uuid')
+const bcrypt = require('bcryptjs')
 
 const seedAdminUser = {
   id: uuidv4(),
@@ -17,7 +17,7 @@ const seedAdminUser = {
   totalEarnings: 0,
   totalWithdrawals: 0,
   registrationDate: new Date()
-};
+}
 
 const seedUsers = [
   {
@@ -52,9 +52,9 @@ const seedUsers = [
     totalWithdrawals: 250,
     registrationDate: new Date(Date.now() - 60 * 24 * 60 * 60 * 1000)
   }
-];
+]
 
 module.exports = {
   seedAdminUser,
   seedUsers
-};
+}

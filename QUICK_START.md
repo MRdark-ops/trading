@@ -9,13 +9,14 @@ You now have a complete, production-ready affiliate marketing platform with:
 ✅ **Customer Website** - React/Vite with authentication  
 ✅ **Database Models** - 6 complete Sequelize models  
 ✅ **API Endpoints** - 30+ endpoints across 8 route files  
-✅ **Documentation** - 7 comprehensive guides  
+✅ **Documentation** - 7 comprehensive guides
 
 ---
 
 ## ⚡ 5-Minute Quick Start
 
 ### 1. Backend Setup
+
 ```bash
 cd backend
 npm install
@@ -25,6 +26,7 @@ npm run dev
 ```
 
 ### 2. Website Setup
+
 ```bash
 cd website
 npm install
@@ -33,6 +35,7 @@ npm run dev
 ```
 
 ### 3. Test the Platform
+
 - Visit http://localhost:3000
 - Register new account
 - Submit payment (use test TXID)
@@ -122,6 +125,7 @@ c:\Users\admin\Downloads\tradnig\
 ## 🔑 Key Features Summary
 
 ### User Authentication
+
 - Email/password registration
 - JWT-based login (24h tokens)
 - Protected routes
@@ -129,6 +133,7 @@ c:\Users\admin\Downloads\tradnig\
 - Persistent authentication across page refreshes
 
 ### Payment Processing
+
 - USDT wallet: `0x22951c64910503f0825fd15667918c6bf0dce1ed`
 - Multi-chain support (Ethereum, Tron, BSC)
 - Transaction verification via blockchain
@@ -136,6 +141,7 @@ c:\Users\admin\Downloads\tradnig\
 - 250 USDT subscription fee
 
 ### Affiliate System
+
 - 5-level commission structure
   - Level 1: 10% (direct)
   - Level 2: 8%
@@ -147,6 +153,7 @@ c:\Users\admin\Downloads\tradnig\
 - Earnings tracking by level
 
 ### Dashboard & Analytics
+
 - User metrics (referrals, earnings, status)
 - Commission breakdown by level
 - Performance charts (Recharts)
@@ -154,6 +161,7 @@ c:\Users\admin\Downloads\tradnig\
 - Withdrawal request management
 
 ### Security Features
+
 - JWT authentication
 - Password hashing (bcrypt)
 - CORS protection
@@ -170,6 +178,7 @@ c:\Users\admin\Downloads\tradnig\
 The website connects to backend at: `http://localhost:5000/api`
 
 Key endpoints:
+
 ```
 POST /auth/register              # Create account
 POST /auth/login                 # User login
@@ -184,6 +193,7 @@ POST /withdrawals                # Request withdrawal
 ```
 
 All requests require JWT token in header:
+
 ```
 Authorization: Bearer {token}
 ```
@@ -193,6 +203,7 @@ Authorization: Bearer {token}
 ## 💾 Database Setup
 
 ### Create PostgreSQL Database
+
 ```sql
 CREATE DATABASE trading_dz;
 CREATE USER trading_dz_user WITH PASSWORD 'secure_password';
@@ -200,7 +211,9 @@ GRANT ALL PRIVILEGES ON DATABASE trading_dz TO trading_dz_user;
 ```
 
 ### Auto-Create Tables
+
 Tables are created automatically by Sequelize when backend starts:
+
 - Users
 - Payments
 - Referrals
@@ -213,6 +226,7 @@ Tables are created automatically by Sequelize when backend starts:
 ## 🚀 Deployment Checklist
 
 ### Pre-Deployment
+
 - [ ] Set strong JWT_SECRET (32+ chars)
 - [ ] Configure database credentials
 - [ ] Setup Telegram bot token (optional)
@@ -227,6 +241,7 @@ Tables are created automatically by Sequelize when backend starts:
 ### Environment Variables
 
 **Backend (.env)**
+
 ```env
 PORT=5000
 NODE_ENV=production
@@ -241,6 +256,7 @@ ADMIN_WALLET_ADDRESS=0x22951c64910503f0825fd15667918c6bf0dce1ed
 ```
 
 **Website (.env.production)**
+
 ```env
 VITE_API_URL=https://api.tradingdz.com/api
 VITE_APP_NAME=Trading DZ
@@ -249,6 +265,7 @@ VITE_APP_NAME=Trading DZ
 ### Deployment Options
 
 **Option 1: Heroku (Backend)**
+
 ```bash
 heroku login
 heroku create trading-dz-api
@@ -258,6 +275,7 @@ git push heroku main
 ```
 
 **Option 2: Vercel (Website)**
+
 ```bash
 npm install -g vercel
 cd website
@@ -265,6 +283,7 @@ vercel
 ```
 
 **Option 3: Docker**
+
 ```bash
 docker-compose up -d
 ```
@@ -274,6 +293,7 @@ docker-compose up -d
 ## 🧪 Testing Checklist
 
 ### Manual Testing
+
 - [ ] Register new account
 - [ ] Verify email
 - [ ] Submit payment
@@ -286,6 +306,7 @@ docker-compose up -d
 - [ ] Test mobile responsiveness
 
 ### API Testing
+
 - [ ] Test all 30+ endpoints
 - [ ] Test authentication
 - [ ] Test authorization
@@ -300,6 +321,7 @@ docker-compose up -d
 ## 📊 Admin Dashboard Setup
 
 The admin dashboard is located in `/frontend` folder and provides:
+
 - User management
 - Payment verification
 - Withdrawal processing
@@ -308,6 +330,7 @@ The admin dashboard is located in `/frontend` folder and provides:
 - Activity logs
 
 To run admin dashboard:
+
 ```bash
 cd frontend
 npm install
@@ -327,6 +350,7 @@ For Telegram channel access:
 4. Add bot as admin
 5. Get channel ID
 6. Configure in backend .env:
+
 ```env
 TELEGRAM_BOT_TOKEN=your_bot_token
 TELEGRAM_CHANNEL_ID=your_channel_id
@@ -339,6 +363,7 @@ When user completes payment, they receive channel invite link.
 ## 💡 Tips & Best Practices
 
 ### For Development
+
 - Keep `.env` files out of git (use `.gitignore`)
 - Use `npm run dev` for auto-reload during development
 - Test API endpoints with Postman or curl
@@ -346,6 +371,7 @@ When user completes payment, they receive channel invite link.
 - Check browser console for frontend errors
 
 ### For Production
+
 - Use strong, random JWT_SECRET
 - Enable HTTPS/SSL everywhere
 - Setup monitoring (Sentry, DataDog)
@@ -357,6 +383,7 @@ When user completes payment, they receive channel invite link.
 - Regular security audits
 
 ### For Support
+
 - Email: support@tradingdz.com
 - Telegram: @TradingDZSupport
 - Check documentation first
@@ -367,12 +394,14 @@ When user completes payment, they receive channel invite link.
 ## 🔒 Security Notes
 
 ### Passwords
+
 - Never commit `.env` files
 - Use strong JWT_SECRET (32+ characters)
 - Change default database passwords
 - Enable 2FA for admin accounts
 
 ### API Security
+
 - CORS configured for trusted domains only
 - Rate limiting enabled
 - Input validation on all endpoints
@@ -380,6 +409,7 @@ When user completes payment, they receive channel invite link.
 - Tokens cannot be reused after logout
 
 ### Database
+
 - Use SSL for database connections in production
 - Regular backups (daily, weekly, monthly)
 - Limit database user permissions
@@ -391,6 +421,7 @@ When user completes payment, they receive channel invite link.
 ## 📞 Support Resources
 
 ### Documentation
+
 - **SETUP_GUIDE.md** - Detailed setup instructions
 - **PROJECT_OVERVIEW.md** - Architecture and features
 - **website/README.md** - Customer website docs
@@ -398,6 +429,7 @@ When user completes payment, they receive channel invite link.
 - **frontend/README.md** - Admin dashboard docs
 
 ### Online Resources
+
 - **React Docs**: https://react.dev
 - **Express.js**: https://expressjs.com
 - **Sequelize**: https://sequelize.org
@@ -405,6 +437,7 @@ When user completes payment, they receive channel invite link.
 - **JWT**: https://jwt.io
 
 ### Contact
+
 - **Email**: support@tradingdz.com
 - **Telegram**: @TradingDZSupport
 - **Website**: https://tradingdz.com
@@ -425,6 +458,7 @@ When user completes payment, they receive channel invite link.
 ## 📈 Performance Optimization
 
 ### Frontend
+
 - Images optimized with Vite
 - Code splitting enabled
 - Lazy loading for routes
@@ -432,6 +466,7 @@ When user completes payment, they receive channel invite link.
 - Minification in production build
 
 ### Backend
+
 - Database connection pooling
 - Redis caching (optional)
 - Compression middleware enabled
@@ -439,6 +474,7 @@ When user completes payment, they receive channel invite link.
 - Database indexes on key columns
 
 ### Database
+
 - Proper indexing on frequently queried columns
 - Connection pooling (min: 2, max: 10)
 - Regular VACUUM and ANALYZE
@@ -449,18 +485,21 @@ When user completes payment, they receive channel invite link.
 ## 🔄 Update & Maintenance
 
 ### Regular Updates
+
 - Check for dependency updates monthly
 - Test before updating production
 - Keep security patches current
 - Monitor deprecation warnings
 
 ### Database Maintenance
+
 - Daily backups
 - Weekly VACUUM
 - Monthly ANALYZE
 - Quarterly optimization review
 
 ### Monitoring
+
 - CPU and memory usage
 - Database query performance
 - API response times
@@ -472,6 +511,7 @@ When user completes payment, they receive channel invite link.
 ## ✨ What's Next?
 
 After deployment, consider:
+
 1. **Analytics**: Integrate Google Analytics
 2. **Email**: Setup email notifications
 3. **SEO**: Optimize for search engines
@@ -486,6 +526,7 @@ After deployment, consider:
 © 2024 Trading DZ. All rights reserved.
 
 Built with:
+
 - React, Node.js, PostgreSQL, Express.js, Sequelize
 
 ---

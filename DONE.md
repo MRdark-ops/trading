@@ -13,12 +13,12 @@
 
 ## كم ملف تم إضافته؟
 
-| النوع | العدد |
-|--------|-------|
-| صفحات ويب | 2 |
-| تصاميم CSS | 2 |
-| ملفات توثيق | 7+ |
-| ملفات معدلة | 4 |
+| النوع       | العدد   |
+| ----------- | ------- |
+| صفحات ويب   | 2       |
+| تصاميم CSS  | 2       |
+| ملفات توثيق | 7+      |
+| ملفات معدلة | 4       |
 | **المجموع** | **15+** |
 
 ---
@@ -26,23 +26,27 @@
 ## كيف أبدأ؟
 
 ### الخطوة 1: شغّل Backend
+
 ```bash
 cd backend
 node mock-server.js
 ```
 
 ### الخطوة 2: شغّل Frontend (terminal جديد)
+
 ```bash
 cd website
 npm run dev
 ```
 
 ### الخطوة 3: افتح المتصفح
+
 ```
 http://localhost:5173
 ```
 
 ### الخطوة 4: سجل دخول
+
 ```
 البريد: user@tradingdz.com
 كلمة المرور: user123456
@@ -52,11 +56,11 @@ http://localhost:5173
 
 ## أين الصفحات الجديدة؟
 
-| الصفحة | الرابط |
-|--------|---------|
-| الإحالات | `/referrals` |
-| السحب | `/withdrawal` |
-| الدفع | `/subscription-payment` |
+| الصفحة   | الرابط                  |
+| -------- | ----------------------- |
+| الإحالات | `/referrals`            |
+| السحب    | `/withdrawal`           |
+| الدفع    | `/subscription-payment` |
 
 ---
 
@@ -85,7 +89,7 @@ http://localhost:5173
 ✅ API endpoints (8 نقاط نهاية)  
 ✅ قاعدة البيانات (4 جداول)  
 ✅ التوثيق الكامل  
-✅ دليل الاختبار  
+✅ دليل الاختبار
 
 **نعم! كل شيء موجود وجاهز** ✅
 
@@ -94,6 +98,7 @@ http://localhost:5173
 ## أين الملفات الجديدة؟
 
 ### الكود:
+
 ```
 website/src/pages/Withdrawal.jsx
 website/src/pages/Withdrawal.css
@@ -102,6 +107,7 @@ website/src/pages/SubscriptionPayment.css
 ```
 
 ### التوثيق:
+
 ```
 START_HERE_NOW.md
 QUICK_START_AR.md
@@ -115,15 +121,19 @@ TESTING_GUIDE_AR.md
 ## هل هناك مشاكل؟
 
 ### "Network Error"؟
+
 ✅ تأكد من تشغيل Backend على 5001
 
 ### "لا أستطيع الدخول"؟
+
 ✅ استخدم: user@tradingdz.com / user123456
 
 ### "الصفحة إنجليزية"؟
+
 ✅ امسح الـ Cache: Ctrl+Shift+Delete ثم Ctrl+F5
 
 ### "الأيقونات لا تظهر"؟
+
 ✅ أعد تثبيت: `npm install lucide-react`
 
 ---

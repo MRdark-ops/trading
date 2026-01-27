@@ -54,6 +54,7 @@ website/
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - Node.js 16+ and npm/yarn
 - Backend server running on http://localhost:5000
 - PostgreSQL database configured
@@ -114,6 +115,7 @@ npm run preview
 ## 💳 Payment Integration
 
 ### Subscription Process
+
 1. User registers and completes profile
 2. Directed to `/payment` page
 3. Shown Binance wallet address: `0x22951c64910503f0825fd15667918c6bf0dce1ed`
@@ -123,6 +125,7 @@ npm run preview
 7. User gains access to Telegram channel and full features
 
 ### Payment States
+
 - **Free/Inactive** - Can register but limited access
 - **Pending** - Payment submitted, waiting for verification
 - **Active** - Full access to all features and Telegram
@@ -130,12 +133,14 @@ npm run preview
 ## 📊 Dashboard Features
 
 ### Metrics
+
 - Direct referrals count
 - Total earnings
 - Paid referrals
 - Available balance for withdrawal
 
 ### Commission Structure
+
 - **Level 1**: 10% commission (direct referrals)
 - **Level 2**: 8% commission (referrals of Level 1)
 - **Level 3**: 6% commission (referrals of Level 2)
@@ -143,6 +148,7 @@ npm run preview
 - **Level 5**: 2% commission (referrals of Level 4)
 
 ### Performance Charts
+
 - Bar chart showing earnings per level
 - Progress bars toward level targets
 - Real-time updates
@@ -150,11 +156,13 @@ npm run preview
 ## 👥 Referral System
 
 ### Referral Link
+
 - Unique code per user: `/register?ref={referralCode}`
 - One-click copy to clipboard
 - Share buttons for Telegram, WhatsApp, Twitter
 
 ### Referral Tracking
+
 - View all referrals with details (name, email, level, status, date, earnings)
 - Referral hierarchy visualization
 - Commission breakdown by level
@@ -162,6 +170,7 @@ npm run preview
 ## 🎨 Design System
 
 ### Color Palette
+
 - **Primary Gold**: `#d4af37` - CTAs, highlights, accents
 - **Secondary Black**: `#0a0a0a` - Main background
 - **Accent Dark**: `#1a1a1a` - Cards, secondary backgrounds
@@ -173,12 +182,14 @@ npm run preview
 - **Error**: `#e74c3c` - Errors/inactive
 
 ### Typography
+
 - **Headings**: Bold, 600+ weight
 - **Body**: Regular weight, 14-16px
 - **Labels**: 12px, uppercase, muted color
 - **Monospace**: Courier New for wallet addresses and code
 
 ### Spacing
+
 - Padding: 16px, 24px, 32px
 - Gaps: 8px, 12px, 16px, 20px, 24px
 - Border radius: 6px (inputs), 8px (cards), 12px (sections)
@@ -188,27 +199,33 @@ npm run preview
 The website connects to backend endpoints:
 
 ### Authentication
+
 - `POST /auth/register` - Create new account
 - `POST /auth/login` - User login
 - `POST /auth/logout` - User logout
 
 ### User
+
 - `GET /users/:id` - Get user profile
 - `PUT /users/:id` - Update user profile
 
 ### Payments
+
 - `POST /payments` - Create payment record
 - `GET /payments/wallet` - Get wallet address for payment
 
 ### Referrals
+
 - `GET /referrals/user/:id` - Get user's referrals
 - `GET /referrals/:id` - Get referral details
 
 ### Commissions
+
 - `GET /commissions/user/:id` - Get commission breakdown by level
 - `GET /commissions` - Get all commissions for user
 
 ### Dashboard
+
 - `GET /dashboard` - Get overall statistics
 
 ## 📱 Responsive Design
@@ -230,6 +247,7 @@ The website connects to backend endpoints:
 ## 🌐 Deployment
 
 ### Environment Variables
+
 ```env
 # Development
 VITE_API_URL=http://localhost:5000/api
@@ -241,12 +259,14 @@ VITE_APP_NAME=Trading DZ
 ```
 
 ### Hosting Options
+
 - **Vercel** (recommended for React/Vite)
 - **Netlify**
 - **AWS S3 + CloudFront**
 - **Docker + Custom Server**
 
 ### Build Process
+
 ```bash
 npm run build
 # dist/ folder contains production files
@@ -255,6 +275,7 @@ npm run build
 ## 📊 Monitoring & Analytics
 
 Track:
+
 - User registrations
 - Payment conversion rates
 - Referral activation rates
@@ -264,15 +285,18 @@ Track:
 ## 🐛 Troubleshooting
 
 ### CORS Issues
+
 - Backend should have CORS enabled for frontend origin
 - Check `VITE_API_URL` in environment files
 
 ### Token Expiration
+
 - Tokens expire after 24 hours
 - Users automatically redirected to login
 - Clear localStorage if stuck in auth loop
 
 ### Payment Verification
+
 - Admin must manually verify USDT transactions
 - User needs admin confirmation to access dashboard
 - Support email for payment issues
