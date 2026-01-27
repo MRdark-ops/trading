@@ -26,7 +26,11 @@
 }
 
 .header-content {
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(212, 175, 55, 0.1) 0%,
+    rgba(212, 175, 55, 0.05) 100%
+  );
   border: 2px solid #d4af37;
   border-radius: 15px;
   padding: 30px;
@@ -142,12 +146,12 @@
 
 .alert-warning {
   background: rgba(255, 165, 0, 0.1);
-  border-left: 4px solid #FFA500;
+  border-left: 4px solid #ffa500;
   border-radius: 12px;
 }
 
 .alert-warning svg {
-  color: #FFA500;
+  color: #ffa500;
   min-width: 20px;
 }
 
@@ -239,7 +243,7 @@
   border: 2px solid #333;
   border-radius: 10px;
   color: #fff;
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
   font-size: 14px;
   direction: ltr;
   text-align: left;
@@ -268,7 +272,11 @@
    ============================================ */
 
 .withdrawal-summary {
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(212, 175, 55, 0.02) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(212, 175, 55, 0.05) 0%,
+    rgba(212, 175, 55, 0.02) 100%
+  );
   border: 1px solid rgba(212, 175, 55, 0.2);
   border-radius: 10px;
   padding: 20px;
@@ -370,7 +378,9 @@
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .form-notice {
@@ -521,7 +531,11 @@
    ============================================ */
 
 .tips-section {
-  background: linear-gradient(135deg, rgba(46, 213, 115, 0.05) 0%, rgba(46, 213, 115, 0.02) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(46, 213, 115, 0.05) 0%,
+    rgba(46, 213, 115, 0.02) 100%
+  );
   border: 2px solid rgba(46, 213, 115, 0.3);
   border-radius: 15px;
   padding: 30px;

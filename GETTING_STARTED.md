@@ -3,8 +3,9 @@
 ## Welcome! 👋
 
 You have a **complete trading platform** with:
+
 - 📱 **Customer Website** (port 3000)
-- 🛠️ **Admin Dashboard** (port 5173)  
+- 🛠️ **Admin Dashboard** (port 5173)
 - 🔌 **Mock API Backend** (port 5001)
 
 Everything is ready to run with **NO database setup required**!
@@ -16,6 +17,7 @@ Everything is ready to run with **NO database setup required**!
 ### Step 1: Open 3 Terminal Windows
 
 You need to run **3 servers simultaneously**. Use any of these:
+
 - VS Code terminal (Ctrl + `)
 - Windows PowerShell
 - Command Prompt
@@ -30,7 +32,7 @@ In **each** terminal, go to the folder and install:
 cd backend
 npm install
 
-# Terminal 2 - Website  
+# Terminal 2 - Website
 cd website
 npm install
 
@@ -48,6 +50,7 @@ node mock-server.js
 ```
 
 Watch for this message:
+
 ```
 🚀 Mock API Server running on http://localhost:5001
 ✅ All endpoints ready
@@ -60,6 +63,7 @@ npm run dev
 ```
 
 Watch for:
+
 ```
   VITE v5.0.0  ready in 123 ms
   ➜  Local:   http://localhost:3000/
@@ -72,6 +76,7 @@ npm run dev
 ```
 
 Watch for:
+
 ```
   VITE v5.0.0  ready in 456 ms
   ➜  Local:   http://localhost:5173/
@@ -81,10 +86,10 @@ Watch for:
 
 ## 🎯 Now Open These URLs
 
-| What | URL | Username | Password |
-|------|-----|----------|----------|
-| 🌐 Website | http://localhost:3000 | (register new) | (register new) |
-| 🛡️ Admin | http://localhost:5173 | admin@tradingdz.com | admin123 |
+| What       | URL                   | Username            | Password       |
+| ---------- | --------------------- | ------------------- | -------------- |
+| 🌐 Website | http://localhost:3000 | (register new)      | (register new) |
+| 🛡️ Admin   | http://localhost:5173 | admin@tradingdz.com | admin123       |
 
 ---
 
@@ -126,6 +131,7 @@ Just click the "✅ دخول" button and you're in!
 ### Watch Backend Logs
 
 **Terminal 1** shows every request:
+
 ```
 🔐 POST /auth/login
 📧 Email: admin@tradingdz.com
@@ -136,6 +142,7 @@ Just click the "✅ دخول" button and you're in!
 ### Check Browser Console
 
 Press **F12** in your browser:
+
 - Click **Console** tab
 - You'll see detailed logs
 - Perfect for debugging!
@@ -143,6 +150,7 @@ Press **F12** in your browser:
 ### View Network Requests
 
 In DevTools **Network** tab:
+
 - See all API calls
 - Check request/response
 - Monitor headers
@@ -152,6 +160,7 @@ In DevTools **Network** tab:
 ## 🧪 Test The Platform
 
 ### Test Admin Login
+
 1. Go to http://localhost:5173
 2. See the beautiful gold-themed form
 3. Credentials are pre-filled
@@ -159,6 +168,7 @@ In DevTools **Network** tab:
 5. Explore the admin dashboard
 
 ### Test Customer Registration
+
 1. Go to http://localhost:3000
 2. Click "Register" button
 3. Fill in the form
@@ -167,6 +177,7 @@ In DevTools **Network** tab:
 6. See your dashboard
 
 ### Test API Connection
+
 1. Open browser DevTools (F12)
 2. Try any action (login, register)
 3. Switch to Network tab
@@ -178,7 +189,9 @@ In DevTools **Network** tab:
 ## 🛠️ Troubleshooting
 
 ### "Port 3000 already in use"
+
 Windows:
+
 ```powershell
 # Find what's using it
 netstat -ano | findstr :3000
@@ -188,11 +201,13 @@ taskkill /PID <PID> /F
 ```
 
 ### "Cannot connect to API"
+
 - Make sure backend terminal shows: `🚀 Mock API Server running on http://localhost:5001`
 - Refresh browser (Ctrl+F5)
 - Check that all 3 servers are running
 
 ### "Dependencies error"
+
 ```bash
 # In the problematic folder (backend, website, or frontend)
 rm -rf node_modules package-lock.json
@@ -200,7 +215,9 @@ npm install
 ```
 
 ### "Module not found"
+
 Make sure you're in the correct folder:
+
 ```bash
 # Wrong
 cd tradnig
@@ -216,18 +233,21 @@ npm install
 ## 📦 What's Inside
 
 ### Backend (`/backend`)
+
 - `mock-server.js` - Entire API (15+ endpoints)
 - In-memory database (no PostgreSQL needed)
 - JWT authentication
 - Test data pre-loaded
 
 ### Website (`/website`)
+
 - 9 pages (Home, Login, Register, Dashboard, etc.)
 - Responsive design
 - Affiliate system
 - Payment management
 
 ### Admin Dashboard (`/frontend`)
+
 - 8 pages (Dashboard, Users, Payments, etc.)
 - Luxury gold theme
 - User management
@@ -238,22 +258,29 @@ npm install
 ## 🎨 Customization Ideas
 
 ### Change Theme Colors
+
 Edit the CSS files to change from gold to your preferred color:
+
 - Website: `website/src/*.css`
 - Admin: `frontend/src/pages/*.css`
 
 ### Add Test Users to Backend
+
 Edit `backend/mock-server.js` and add more users to the database
 
 ### Change Admin Credentials
+
 In `frontend/src/pages/Login.jsx`, modify these lines:
+
 ```jsx
-const [email, setEmail] = useState('admin@tradingdz.com');
-const [password, setPassword] = useState('admin123');
+const [email, setEmail] = useState("admin@tradingdz.com");
+const [password, setPassword] = useState("admin123");
 ```
 
 ### Add New Admin Users
+
 In `backend/mock-server.js`, add to the users array:
+
 ```javascript
 {
   id: 3,
@@ -285,16 +312,19 @@ After running npm install, you'll also have:
 ## ✨ Key Features
 
 ✅ **No Database Setup**
+
 - Everything in-memory
 - Instant startup
 - Perfect for testing
 
 ✅ **Beautiful Design**
+
 - Luxury gold/black theme
 - Responsive on all devices
 - Professional UI
 
 ✅ **Complete Features**
+
 - User management
 - Payment system
 - Referral tracking
@@ -302,12 +332,14 @@ After running npm install, you'll also have:
 - Statistics & analytics
 
 ✅ **Easy Testing**
+
 - Pre-filled admin credentials
 - Test data included
 - Detailed console logs
 - Network tab visible
 
 ✅ **Well-Documented**
+
 - Comments in code
 - Clear error messages
 - Helpful console logs
@@ -348,23 +380,27 @@ After everything is running:
 ## 💡 Tips & Tricks
 
 ### Faster Development
+
 - Keep all 3 terminals visible
 - Watch backend logs for debugging
 - Use browser DevTools (F12)
 - Check Network tab for API calls
 
 ### Testing Login
+
 - Website & Admin both support login
 - Separate user databases
 - Admin: admin@tradingdz.com / admin123
 - Customer: register your own account
 
 ### Resetting Data
+
 - Restart backend → all data resets
 - Perfect for testing fresh starts
 - No database cleanup needed
 
 ### Password Toggle
+
 - Click eye icon on login forms
 - Shows/hides password text
 - Test with both states
@@ -374,6 +410,7 @@ After everything is running:
 ## 🎓 Learning Opportunities
 
 Perfect for learning:
+
 - React & hooks
 - JWT authentication
 - API integration

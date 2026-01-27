@@ -22,6 +22,7 @@ curl -X POST http://localhost:5001/api/auth/login \
 ```
 
 ### الاستجابة:
+
 ```json
 {
   "success": true,
@@ -93,6 +94,7 @@ curl -X GET http://localhost:5001/api/security/status \
 ```
 
 **الاستجابة:**
+
 ```json
 {
   "status": {
@@ -158,13 +160,13 @@ curl -X GET "http://localhost:5001/api/security/tokens/<token>" \
 
 قم بمراقبة هذه المؤشرات:
 
-| المؤشر | الحد الأخضر | الحد الأصفر | الحد الأحمر |
-|--------|-----------|-----------|-----------|
-| الأنشطة المريبة | < 5 | 5-20 | > 20 |
-| عناوين IP المحظورة | 0 | 1-3 | > 3 |
-| محاولات فاشلة | < 10 | 10-30 | > 30 |
-| التهديدات الحرجة | 0 | 1-2 | > 2 |
-| جلسات نشطة | < 500 | 500-1000 | > 1000 |
+| المؤشر             | الحد الأخضر | الحد الأصفر | الحد الأحمر |
+| ------------------ | ----------- | ----------- | ----------- |
+| الأنشطة المريبة    | < 5         | 5-20        | > 20        |
+| عناوين IP المحظورة | 0           | 1-3         | > 3         |
+| محاولات فاشلة      | < 10        | 10-30       | > 30        |
+| التهديدات الحرجة   | 0           | 1-2         | > 2         |
+| جلسات نشطة         | < 500       | 500-1000    | > 1000      |
 
 ---
 
@@ -173,16 +175,19 @@ curl -X GET "http://localhost:5001/api/security/tokens/<token>" \
 ### تنبيهات يجب الاستجابة لها فوراً:
 
 🔴 **حرجة (Critical)**
+
 - محاولة SQL Injection
 - محاولة XSS
 - عناوين IP متعددة تحاول جميعها الوصول
 
 🟠 **عالية (High)**
+
 - 5+ محاولات دخول فاشلة من نفس IP
 - محاولة وصول إداري غير مصرح
 - أنشطة غير عادية من حساب معروف
 
 🟡 **متوسطة (Medium)**
+
 - تسجيل دخول من IP جديد
 - تسجيل دخول في وقت غير عادي
 
@@ -243,29 +248,29 @@ curl -X POST http://localhost:5001/api/auth/register \
 ```javascript
 // تخزين التوكن
 const handleLogin = async (email, password) => {
-  const response = await fetch('http://localhost:5001/api/auth/login', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email, password })
+  const response = await fetch("http://localhost:5001/api/auth/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password }),
   });
 
   const data = await response.json();
-  
+
   if (data.success) {
-    localStorage.setItem('token', data.token);
-    localStorage.setItem('user', JSON.stringify(data.user));
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("user", JSON.stringify(data.user));
   }
 };
 
 // استخدام التوكن في الطلبات
 const apiCall = async (endpoint) => {
-  const token = localStorage.getItem('token');
-  
+  const token = localStorage.getItem("token");
+
   return fetch(`http://localhost:5001${endpoint}`, {
     headers: {
-      'Authorization': `Bearer ${token}`,
-      'Content-Type': 'application/json'
-    }
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
   });
 };
 ```
@@ -277,25 +282,29 @@ const apiCall = async (endpoint) => {
 ### للإنتاج (Production):
 
 1. **استبدل كلمات المرور:**
+
    ```javascript
    // استخدم bcrypt
-   const bcrypt = require('bcrypt');
+   const bcrypt = require("bcrypt");
    const hashed = await bcrypt.hash(password, 10);
    ```
 
 2. **استخدم قاعدة بيانات حقيقية:**
+
    ```javascript
    // MongoDB أو PostgreSQL
    const user = await User.findOne({ email });
    ```
 
 3. **فعّل HTTPS:**
+
    ```bash
    npm install https
    # استخدم شهادات SSL
    ```
 
 4. **ضبط متغيرات البيئة:**
+
    ```bash
    # .env
    NODE_ENV=production
@@ -306,8 +315,8 @@ const apiCall = async (endpoint) => {
 5. **استخدم قائمة بيضاء (Whitelist):**
    ```javascript
    const allowedOrigins = [
-     'https://yoursite.com',
-     'https://admin.yoursite.com'
+     "https://yoursite.com",
+     "https://admin.yoursite.com",
    ];
    ```
 
@@ -318,6 +327,7 @@ const apiCall = async (endpoint) => {
 اذا واجهت مشاكل:
 
 1. تحقق من السجلات:
+
    ```bash
    curl http://localhost:5001/api/security/status
    ```

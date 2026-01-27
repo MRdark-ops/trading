@@ -17,7 +17,11 @@
   padding: 24px 16px;
   border-bottom: 2px solid #d4af37;
   text-align: center;
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+  background: linear-gradient(
+    135deg,
+    rgba(212, 175, 55, 0.1),
+    rgba(212, 175, 55, 0.05)
+  );
 }
 
 .logo {

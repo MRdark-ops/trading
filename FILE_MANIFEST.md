@@ -3,6 +3,7 @@
 ## 📂 Project Structure & File Listing
 
 ### Root Directory Files
+
 ```
 trading_dz/
 ├── README.md                    - Project introduction
@@ -24,6 +25,7 @@ trading_dz/
 ## 🖥️ Backend Files (`/backend`)
 
 ### Core Server
+
 ```
 backend/
 ├── src/
@@ -70,6 +72,7 @@ backend/
 ```
 
 ### Backend Dependencies
+
 ```json
 {
   "express": "^4.18.2",
@@ -90,6 +93,7 @@ backend/
 ## 🌐 Website Files (`/website`)
 
 ### Frontend Application Structure
+
 ```
 website/
 ├── src/
@@ -238,6 +242,7 @@ website/
    - Renders component if authenticated
 
 ### Website Styling
+
 - **Global Styles**: index.css (CSS variables, scrollbar, utilities)
 - **Responsive Design**: Mobile-first approach
 - **Color Scheme**: Gold (#d4af37) and black (#0a0a0a)
@@ -245,6 +250,7 @@ website/
 - **No CSS Framework**: Pure CSS3 with custom styling
 
 ### Website Dependencies
+
 ```json
 {
   "react": "^18.2.0",
@@ -315,6 +321,7 @@ trading_dz/
 ## 📊 Database Models
 
 ### 1. User Model
+
 ```javascript
 {
   id: UUID,
@@ -339,6 +346,7 @@ trading_dz/
 ```
 
 ### 2. Payment Model
+
 ```javascript
 {
   id: UUID,
@@ -355,6 +363,7 @@ trading_dz/
 ```
 
 ### 3. Referral Model
+
 ```javascript
 {
   id: UUID,
@@ -368,6 +377,7 @@ trading_dz/
 ```
 
 ### 4. Commission Model
+
 ```javascript
 {
   id: UUID,
@@ -381,6 +391,7 @@ trading_dz/
 ```
 
 ### 5. Withdrawal Model
+
 ```javascript
 {
   id: UUID,
@@ -395,6 +406,7 @@ trading_dz/
 ```
 
 ### 6. AdminLog Model
+
 ```javascript
 {
   id: UUID,
@@ -412,6 +424,7 @@ trading_dz/
 ## 🔌 API Endpoints (30+)
 
 ### Authentication Routes (4)
+
 ```
 POST   /api/auth/register
 POST   /api/auth/login
@@ -420,6 +433,7 @@ POST   /api/auth/refresh-token
 ```
 
 ### User Routes (3)
+
 ```
 GET    /api/users/:id
 PUT    /api/users/:id
@@ -427,6 +441,7 @@ DELETE /api/users/:id
 ```
 
 ### Payment Routes (4)
+
 ```
 POST   /api/payments
 GET    /api/payments
@@ -435,6 +450,7 @@ PUT    /api/payments/:id/verify
 ```
 
 ### Referral Routes (3)
+
 ```
 GET    /api/referrals
 GET    /api/referrals/:id
@@ -442,6 +458,7 @@ GET    /api/referrals/tree
 ```
 
 ### Commission Routes (3)
+
 ```
 GET    /api/commissions
 GET    /api/commissions/breakdown
@@ -449,12 +466,14 @@ POST   /api/commissions/calculate
 ```
 
 ### Dashboard Routes (2)
+
 ```
 GET    /api/dashboard
 GET    /api/dashboard/stats
 ```
 
 ### Admin Routes (6+)
+
 ```
 GET    /api/admin/users
 PUT    /api/admin/users/:id
@@ -469,9 +488,11 @@ PUT    /api/admin/withdrawals/:id/approve
 ## 🎨 CSS Files Summary
 
 ### Global Styles
+
 - `website/src/index.css` - CSS variables, scrollbar, utilities
 
 ### Page Styles
+
 - `website/src/App.css` - App container styles
 - `website/src/pages/Home.css` - Landing page (sections, cards, animations)
 - `website/src/pages/Auth.css` - Login & Register (forms, inputs, buttons)
@@ -483,6 +504,7 @@ PUT    /api/admin/withdrawals/:id/approve
 - `website/src/pages/NotFound.css` - 404 page (error message)
 
 ### Component Styles
+
 - `website/src/components/Navbar.css` - Navigation bar
 - `website/src/components/Footer.css` - Footer
 
@@ -491,18 +513,21 @@ PUT    /api/admin/withdrawals/:id/approve
 ## 📦 Configuration Files
 
 ### Backend Config
+
 - `backend/src/config/config.js` - Database connection config
 - `backend/src/config/database.js` - Sequelize setup
 - `backend/src/config/middleware.js` - Middleware configuration
 - `backend/.env` - Environment variables
 
 ### Website Config
+
 - `website/vite.config.js` - Vite build configuration
 - `website/.env.development` - Dev environment variables
 - `website/.env.production` - Prod environment variables
 - `website/index.html` - HTML template
 
 ### Docker Config
+
 - `docker-compose.yml` - Docker Compose configuration
 
 ---
@@ -510,6 +535,7 @@ PUT    /api/admin/withdrawals/:id/approve
 ## 🔐 Security Features
 
 ### Files & Implementation
+
 - `backend/src/middleware/auth.js` - JWT verification
 - `backend/src/utils/validators.js` - Input validation
 - `backend/src/server.js` - CORS, helmet.js, rate limiting
@@ -517,6 +543,7 @@ PUT    /api/admin/withdrawals/:id/approve
 - `website/src/components/ProtectedRoute.jsx` - Route protection
 
 ### Security Measures
+
 ✅ JWT authentication (24h expiry)
 ✅ Password hashing (bcrypt)
 ✅ CORS protection
@@ -543,26 +570,27 @@ PUT    /api/admin/withdrawals/:id/approve
 
 ## 📊 Statistics
 
-| Category | Count |
-|----------|-------|
-| **React Components** | 12+ |
-| **Pages** | 9 |
-| **API Endpoints** | 30+ |
-| **Database Models** | 6 |
-| **CSS Files** | 15+ |
-| **API Routes** | 8 files |
-| **Middleware** | 5+ |
-| **Utilities** | 5+ |
-| **Documentation Files** | 7 |
-| **Configuration Files** | 8 |
-| **Total Files** | 100+ |
-| **Lines of Code** | 6500+ |
+| Category                | Count   |
+| ----------------------- | ------- |
+| **React Components**    | 12+     |
+| **Pages**               | 9       |
+| **API Endpoints**       | 30+     |
+| **Database Models**     | 6       |
+| **CSS Files**           | 15+     |
+| **API Routes**          | 8 files |
+| **Middleware**          | 5+      |
+| **Utilities**           | 5+      |
+| **Documentation Files** | 7       |
+| **Configuration Files** | 8       |
+| **Total Files**         | 100+    |
+| **Lines of Code**       | 6500+   |
 
 ---
 
 ## 🎯 File Organization
 
 ### By Feature
+
 - **Authentication**: auth.jsx, auth.js (routes), auth.js (middleware)
 - **Payments**: Payment.jsx, payments.js (routes), Payment.css
 - **Referrals**: Referrals.jsx, referrals.js (routes), Referrals.css
@@ -572,6 +600,7 @@ PUT    /api/admin/withdrawals/:id/approve
 - **API**: routes/ folder (8 files)
 
 ### By Technology
+
 - **React Files**: .jsx files in /website/src
 - **Node Files**: .js files in /backend/src
 - **Stylesheets**: .css files throughout
@@ -603,6 +632,7 @@ PUT    /api/admin/withdrawals/:id/approve
 ## 🎉 Ready to Deploy!
 
 All files are created, configured, and ready for:
+
 - ✅ Development testing
 - ✅ Staging deployment
 - ✅ Production launch

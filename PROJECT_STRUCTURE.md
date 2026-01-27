@@ -113,6 +113,7 @@ tradnig/
 **Purpose:** API server with all endpoints
 
 **Provides:**
+
 - User authentication (register/login)
 - User management
 - Payment tracking
@@ -122,6 +123,7 @@ tradnig/
 - System logs
 
 **Key Features:**
+
 - In-memory database (no PostgreSQL)
 - JWT token generation
 - CORS support
@@ -134,6 +136,7 @@ tradnig/
 **Purpose:** Customer-facing affiliate platform
 
 **Pages:**
+
 1. **Home** - Landing page with features
 2. **Register** - New user registration
 3. **Login** - User authentication
@@ -145,11 +148,13 @@ tradnig/
 9. **NotFound** - 404 error page
 
 **Components:**
+
 - **Navbar** - Navigation & user menu
 - **Footer** - Footer section
 - **ProtectedRoute** - Auth wrapper
 
 **Technology:**
+
 - React 18
 - Vite build tool
 - React Router v6
@@ -162,6 +167,7 @@ tradnig/
 **Purpose:** Admin management panel
 
 **Pages:**
+
 1. **Login** - ✨ NEW! With Arabic labels & pre-filled creds
 2. **Dashboard** - Overview & statistics
 3. **Users** - User management
@@ -173,9 +179,11 @@ tradnig/
 9. **Logs** - System logs viewer
 
 **Components:**
+
 - **Sidebar** - Navigation menu
 
 **Technology:**
+
 - React 18
 - Vite build tool
 - React Router v6
@@ -230,6 +238,7 @@ tradnig/
 ## 📋 Core Files Explained
 
 ### Backend Core
+
 - **`backend/mock-server.js`**
   - Main API server
   - All 15+ endpoints defined here
@@ -237,11 +246,13 @@ tradnig/
   - Start with: `node mock-server.js`
 
 ### Website Core
+
 - **`website/src/App.jsx`** - Main app component
 - **`website/src/api/client.js`** - API client for requests
 - **`website/vite.config.js`** - Build config (port 3000)
 
 ### Admin Core
+
 - **`frontend/src/App.jsx`** - Main app component
 - **`frontend/src/pages/Login.jsx`** - ✨ Improved login form
 - **`frontend/src/pages/Login.css`** - Beautiful styling
@@ -253,6 +264,7 @@ tradnig/
 ## 🎨 CSS Files
 
 ### Website Styling
+
 ```
 website/src/
 ├── App.css              - Main app styles
@@ -270,6 +282,7 @@ website/src/
 ```
 
 ### Admin Styling
+
 ```
 frontend/src/
 ├── App.css              - Main app styles
@@ -323,6 +336,7 @@ frontend/src/
 ## 📊 Database Schema (In-Memory)
 
 ### Users Table
+
 ```javascript
 {
   id: number,
@@ -337,6 +351,7 @@ frontend/src/
 ```
 
 ### Payments Table
+
 ```javascript
 {
   id: number,
@@ -349,6 +364,7 @@ frontend/src/
 ```
 
 ### Referrals Table
+
 ```javascript
 {
   id: number,
@@ -365,24 +381,30 @@ frontend/src/
 ## 🚀 Startup Sequence
 
 **Terminal 1 (Backend):**
+
 ```bash
 cd backend
 node mock-server.js
 ```
+
 ✅ Result: `🚀 Mock API Server running on http://localhost:5001`
 
 **Terminal 2 (Website):**
+
 ```bash
 cd website
 npm run dev
 ```
+
 ✅ Result: `➜  Local:   http://localhost:3000/`
 
 **Terminal 3 (Admin):**
+
 ```bash
 cd frontend
 npm run dev
 ```
+
 ✅ Result: `➜  Local:   http://localhost:5173/`
 
 ---
@@ -390,17 +412,21 @@ npm run dev
 ## 🔧 Configuration Files
 
 ### Vite Configs
+
 - **`backend/vite.config.js`** - N/A (Express, not Vite)
 - **`website/vite.config.js`** - Port 3000
 - **`frontend/vite.config.js`** - Port 5173
 
 ### Tailwind Config (Admin Only)
+
 - **`frontend/tailwind.config.js`** - Tailwind CSS setup
 
 ### PostCSS Config (Admin Only)
+
 - **`frontend/postcss.config.js`** - CSS preprocessing
 
 ### Package Files
+
 - **`backend/package.json`** - Backend dependencies
 - **`website/package.json`** - Website dependencies
 - **`frontend/package.json`** - Admin dependencies
@@ -410,11 +436,13 @@ npm run dev
 ## 📦 Dependencies Summary
 
 ### Backend
+
 - express (web framework)
 - cors (cross-origin support)
 - jsonwebtoken (JWT tokens)
 
 ### Website & Admin
+
 - react (UI library)
 - react-router-dom (routing)
 - axios (HTTP client)
@@ -430,39 +458,44 @@ npm run dev
 Need to...
 
 **Change the port?**
+
 - Website: Edit `website/vite.config.js` line with `port: 3000`
 - Admin: Edit `frontend/vite.config.js` line with `port: 5173`
 - Backend: Edit `backend/mock-server.js` line with `5001`
 
 **Add a new page?**
+
 - Website: Create file in `website/src/pages/`
 - Admin: Create file in `frontend/src/pages/`
 - Update router in `App.jsx`
 
 **Change theme colors?**
+
 - Website: Edit CSS files in `website/src/`
 - Admin: Edit CSS files or `frontend/tailwind.config.js`
 
 **Add test data?**
+
 - Edit `backend/mock-server.js` users array
 
 **Change admin credentials?**
+
 - Edit `frontend/src/pages/Login.jsx` state values
 
 ---
 
 ## 🔍 Important Files
 
-| File | Purpose | Modify to... |
-|------|---------|-------------|
-| `backend/mock-server.js` | All endpoints | Add/change API behavior |
-| `website/src/App.jsx` | Website routing | Add/remove pages |
-| `frontend/src/App.jsx` | Admin routing | Add/remove pages |
-| `website/src/api/client.js` | API communication | Change API base URL |
-| `frontend/src/api/client.js` | API communication | Change API base URL |
-| `frontend/src/pages/Login.jsx` | Admin login ✨ | Change credentials |
-| `website/vite.config.js` | Website config | Change port 3000 |
-| `frontend/vite.config.js` | Admin config | Change port 5173 |
+| File                           | Purpose           | Modify to...            |
+| ------------------------------ | ----------------- | ----------------------- |
+| `backend/mock-server.js`       | All endpoints     | Add/change API behavior |
+| `website/src/App.jsx`          | Website routing   | Add/remove pages        |
+| `frontend/src/App.jsx`         | Admin routing     | Add/remove pages        |
+| `website/src/api/client.js`    | API communication | Change API base URL     |
+| `frontend/src/api/client.js`   | API communication | Change API base URL     |
+| `frontend/src/pages/Login.jsx` | Admin login ✨    | Change credentials      |
+| `website/vite.config.js`       | Website config    | Change port 3000        |
+| `frontend/vite.config.js`      | Admin config      | Change port 5173        |
 
 ---
 
@@ -485,14 +518,14 @@ After startup, verify:
 
 ## 📚 Documentation Files
 
-| File | Purpose |
-|------|---------|
-| `GETTING_STARTED.md` | Quick start guide |
-| `SETUP_IMPROVED.md` | Detailed setup instructions |
-| `ADMIN_LOGIN_IMPROVEMENTS.md` | What's new in login page |
-| `PROJECT_STRUCTURE.md` | This file |
-| `README.md` | Original readme |
-| `SETUP.md` | Original setup guide |
+| File                          | Purpose                     |
+| ----------------------------- | --------------------------- |
+| `GETTING_STARTED.md`          | Quick start guide           |
+| `SETUP_IMPROVED.md`           | Detailed setup instructions |
+| `ADMIN_LOGIN_IMPROVEMENTS.md` | What's new in login page    |
+| `PROJECT_STRUCTURE.md`        | This file                   |
+| `README.md`                   | Original readme             |
+| `SETUP.md`                    | Original setup guide        |
 
 ---
 
@@ -517,7 +550,7 @@ Everything is organized and documented. You can:
 ✅ Register as customer  
 ✅ Test all features  
 ✅ Monitor logs  
-✅ Customize as needed  
+✅ Customize as needed
 
 Perfect for development, testing, and learning!
 
