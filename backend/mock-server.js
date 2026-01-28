@@ -472,67 +472,75 @@ app.post('/api/auth/login', (req, res) => {
       });
     }
 
-    // Input Validation
-    const validation = InputValidator.validateRequest({ email, password });
-    if (!validation.isValid) {
-      securityMonitor.addSuspiciousActivity(email, ip, 'INVALID_INPUT', { errors: validation.errors });
-      return res.status(400).json({
-        success: false,
-        error: validation.errors[0]
-      });
-    }
+        // Input Validation
+        const validation = InputValidator.validateRequest({ email, password });
+        if (!validation.isValid) {
+          securityMonitor.addSuspiciousActivity(email, ip, 'INVALID_INPUT', { errors: validation.errors });
+          return res.status(400).json({
+            success: false,
+            error: validation.errors[0]
+          });
+        }
 
-    console.log('🔐 Login attempt:', { email, ip });
+        // Sanitize user input before logging
+        const sanitizedEmail = email.replace(/[
 
-    // Check if email and password provided
-    if (!email || !password) {
-      return res.status(400).json({
-        success: false,
-        error: 'Email and password are required'
-      });
-    }
+    ]/g, '');
+        const sanitizedIp = ip.replace(/[
 
-    // Find user
-    const user = Object.values(users).find(u => u.email === email);
+    ]/g, '');
 
-    if (!user) {
-      securityMonitor.recordFailedAttempt(email, ip);
-      console.log('❌ User not found:', email);
-      return res.status(401).json({
-        success: false,
-        error: 'Invalid email or password'
-      });
-    }
+        console.log('🔐 Login attempt:', { email: sanitizedEmail, ip: sanitizedIp });
 
-    // Verify password
-    if (user.password !== password) {
-      const allowed = securityMonitor.recordFailedAttempt(email, ip);
-      console.log('❌ Wrong password for:', email);
-      
-      if (!allowed) {
-        return res.status(429).json({
-          success: false,
-          error: '🔒 Account locked. Too many failed attempts.'
-        });
-      }
+        // Check if email and password provided
+        if (!email || !password) {
+          return res.status(400).json({
+            success: false,
+            error: 'Email and password are required'
+          });
+        }
 
-      return res.status(401).json({
-        success: false,
-        error: 'Invalid email or password'
-      });
-    }
+        // Find user
+        const user = Object.values(users).find(u => u.email === email);
 
-    // Successful login - clear failed attempts
-    securityMonitor.clearFailedAttempts(email, ip);
+        if (!user) {
+          securityMonitor.recordFailedAttempt(email, ip);
+          console.log('❌ User not found:', sanitizedEmail);
+          return res.status(401).json({
+            success: false,
+            error: 'Invalid email or password'
+          });
+        }
 
-    // Generate token
-    const token = tokenManager.generateToken(user.id, user.role || 'user');
+        // Verify password
+        if (user.password !== password) {
+          const allowed = securityMonitor.recordFailedAttempt(email, ip);
+          console.log('❌ Wrong password for:', sanitizedEmail);
+          
+          if (!allowed) {
+            return res.status(429).json({
+              success: false,
+              error: '🔒 Account locked. Too many failed attempts.'
+            });
+          }
 
-    // Update user login info
-    user.lastLogin = new Date().toISOString();
-    user.loginAttempts = 0;
+          return res.status(401).json({
+            success: false,
+            error: 'Invalid email or password'
+          });
+        }
 
-    // Log activity
+        // Successful login - clear failed attempts
+        securityMonitor.clearFailedAttempts(email, ip);
+
+        // Generate token
+        const token = tokenManager.generateToken(user.id, user.role || 'user');
+
+        // Update user login info
+        user.lastLogin = new Date().toISOString();
+        user.loginAttempts = 0;
+
+        // Log activity
     activityLogger.log(user.id, 'LOGIN', {
       email,
       ip,
@@ -639,6 +647,8 @@ app.post('/api/withdrawal/request', verifyToken, (req, res) => {
 
     // Create withdrawal request
     const withdrawalId = Math.max(0, ...Object.keys(withdrawalRequests).map(Number)) + 1;
+    const rawWalletAddress = req.body.walletAddress || 'User_Wallet_Address';
+    const walletAddress = rawWalletAddress.replace(/[\n\r]/g, '');
     const withdrawal = {
       id: withdrawalId,
       userId,
@@ -646,7 +656,7 @@ app.post('/api/withdrawal/request', verifyToken, (req, res) => {
       referralsCount,
       earnings: totalEarnings,
       status: 'pending',
-      walletAddress: req.body.walletAddress || 'User_Wallet_Address',
+      walletAddress: walletAddress,
       requestedAt: new Date().toISOString(),
       completedAt: null
     };
@@ -700,7 +710,11 @@ app.post('/api/payment/submit-subscription', verifyToken, (req, res) => {
     const { txHash, amount } = req.body;
     const user = users[userId];
 
-    console.log(`💳 Payment submission from user ${userId}`, { txHash, amount });
+    const sanitizedTxHash = typeof txHash === 'string'
+      ? txHash.replace(/[\r\n]+/g, '')
+      : txHash;
+
+    console.log(`💳 Payment submission from user ${userId}`, { txHash: sanitizedTxHash, amount });
 
     if (amount !== 25) {
       return res.status(400).json({
@@ -737,7 +751,7 @@ app.post('/api/payment/submit-subscription', verifyToken, (req, res) => {
       accessGrantedAt: new Date().toISOString()
     };
 
-    console.log(`✅ Payment completed for user ${userId}`, payment);
+    console.log(`✅ Payment completed for user ${userId}`, { ...payment, txHash: payment.txHash.replace(/[\r\n]+/g, '') });
 
     res.json({
       success: true,
@@ -931,7 +945,8 @@ app.get('/api/referrals', (req, res) => {
 // Get referrals for a specific user
 app.get('/api/referrals/user/:userId', (req, res) => {
   const { userId } = req.params;
-  console.log(`📊 Fetching referrals for user ${userId}`);
+  const sanitizedUserId = userId.replace(/[\r\n]/g, '');
+  console.log(`📊 Fetching referrals for user ${sanitizedUserId}`);
   
   const referrals = [
     {
