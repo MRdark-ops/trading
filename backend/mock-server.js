@@ -482,7 +482,9 @@ app.post('/api/auth/login', (req, res) => {
       });
     }
 
-    console.log('🔐 Login attempt:', { email, ip });
+    const safeEmail = email.replace(/[\n\r]/g, '');
+    const safeIp = ip.replace(/[\n\r]/g, '');
+    console.log('🔐 Login attempt:', { email: safeEmail, ip: safeIp });
 
     // Check if email and password provided
     if (!email || !password) {
@@ -497,7 +499,7 @@ app.post('/api/auth/login', (req, res) => {
 
     if (!user) {
       securityMonitor.recordFailedAttempt(email, ip);
-      console.log('❌ User not found:', email);
+      console.log('❌ User not found:', safeEmail);
       return res.status(401).json({
         success: false,
         error: 'Invalid email or password'
@@ -507,7 +509,7 @@ app.post('/api/auth/login', (req, res) => {
     // Verify password
     if (user.password !== password) {
       const allowed = securityMonitor.recordFailedAttempt(email, ip);
-      console.log('❌ Wrong password for:', email);
+      console.log('❌ Wrong password for:', safeEmail);
       
       if (!allowed) {
         return res.status(429).json({
@@ -637,6 +639,10 @@ app.post('/api/withdrawal/request', verifyToken, (req, res) => {
       });
     }
 
+    // Sanitize wallet address input
+    const rawWalletAddress = req.body.walletAddress || 'User_Wallet_Address';
+    const walletAddress = rawWalletAddress.replace(/[\n\r]/g, '');
+
     // Create withdrawal request
     const withdrawalId = Math.max(0, ...Object.keys(withdrawalRequests).map(Number)) + 1;
     const withdrawal = {
@@ -646,7 +652,7 @@ app.post('/api/withdrawal/request', verifyToken, (req, res) => {
       referralsCount,
       earnings: totalEarnings,
       status: 'pending',
-      walletAddress: req.body.walletAddress || 'User_Wallet_Address',
+      walletAddress,
       requestedAt: new Date().toISOString(),
       completedAt: null
     };
@@ -700,7 +706,11 @@ app.post('/api/payment/submit-subscription', verifyToken, (req, res) => {
     const { txHash, amount } = req.body;
     const user = users[userId];
 
-    console.log(`💳 Payment submission from user ${userId}`, { txHash, amount });
+    const sanitizedTxHash = typeof txHash === 'string' ? txHash.replace(/[\n\r]/g, '') : txHash;
+    const sanitizedAmount = typeof amount === 'string' ? amount.replace(/[\n\r]/g, '') : amount;
+    const sanitizedUserId = typeof userId === 'string' ? userId.replace(/[\n\r]/g, '') : userId;
+
+    console.log(`💳 Payment submission from user ${sanitizedUserId}`, { txHash: sanitizedTxHash, amount: sanitizedAmount });
 
     if (amount !== 25) {
       return res.status(400).json({
@@ -737,7 +747,8 @@ app.post('/api/payment/submit-subscription', verifyToken, (req, res) => {
       accessGrantedAt: new Date().toISOString()
     };
 
-    console.log(`✅ Payment completed for user ${userId}`, payment);
+    const sanitizedPaymentForLog = { ...payment, txHash: sanitizedTxHash };
+    console.log(`✅ Payment completed for user ${sanitizedUserId}`, sanitizedPaymentForLog);
 
     res.json({
       success: true,
@@ -931,7 +942,8 @@ app.get('/api/referrals', (req, res) => {
 // Get referrals for a specific user
 app.get('/api/referrals/user/:userId', (req, res) => {
   const { userId } = req.params;
-  console.log(`📊 Fetching referrals for user ${userId}`);
+  const sanitizedUserId = userId.replace(/[\n\r]/g, '');
+  console.log(`📊 Fetching referrals for user ${sanitizedUserId}`);
   
   const referrals = [
     {

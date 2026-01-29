@@ -258,6 +258,7 @@ router.post('/:userId/message', authMiddleware, adminMiddleware, async (req, res
   try {
     const { userId } = req.params;
     const { message } = req.body;
+    const sanitizedMessage = message.replace(/[\r\n]/g, '');
 
     if (!message || !message.trim()) {
       return res.status(400).json({ error: 'Message is required' });
@@ -270,7 +271,7 @@ router.post('/:userId/message', authMiddleware, adminMiddleware, async (req, res
 
     // Here you would typically send the message via email, SMS, or in-app notification
     // For now, we'll log it and simulate sending
-    console.log(`Message to user ${user.email}: ${message}`);
+    console.log(`Message to user ${user.email}: ${sanitizedMessage}`);
 
     // Log the admin action
     await logAdminAction(
@@ -279,7 +280,7 @@ router.post('/:userId/message', authMiddleware, adminMiddleware, async (req, res
       'User',
       userId,
       null,
-      { message },
+      { message: sanitizedMessage },
       req
     );
 
