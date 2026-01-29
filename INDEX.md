@@ -9,6 +9,7 @@ A production-ready, secure admin dashboard for managing a trading platform with 
 ## 📚 Documentation Files
 
 ### Quick Links
+
 1. **PROJECT_SUMMARY.md** - Complete project overview and completion status
 2. **README.md** - Features, tech stack, and API overview
 3. **SETUP.md** - Installation and quick start guide
@@ -21,10 +22,12 @@ A production-ready, secure admin dashboard for managing a trading platform with 
 ## 🚀 Quick Start (5 minutes)
 
 ### Prerequisites
+
 - Node.js 18+
 - PostgreSQL 12+
 
 ### Backend
+
 ```bash
 cd backend
 npm install
@@ -34,6 +37,7 @@ npm run dev
 ```
 
 ### Frontend
+
 ```bash
 cd frontend
 npm install
@@ -43,6 +47,7 @@ npm run dev
 Access dashboard at: **http://localhost:3000**
 
 Default credentials (after seed):
+
 - Email: `admin@tradingdz.com`
 - Password: `Admin@123456`
 
@@ -78,30 +83,35 @@ tradnig/
 ## ✨ Key Features
 
 ✅ **Admin Dashboard**
+
 - Real-time metrics and statistics
 - User growth charts
 - Top referrer leaderboard
 - Revenue tracking
 
 ✅ **User Management**
+
 - View/edit user profiles
 - Change status and type
 - Reset earnings
 - Adjust balances
 
 ✅ **Payment System**
+
 - Track all payments
 - Manual payment entry
 - Subscription management
 - Payment status updates
 
 ✅ **Referral System**
+
 - Unique referral codes
 - Referral tracking
 - Top referrer rankings
 - Conversion rate analysis
 
 ✅ **Commission System (5-Level MLM)**
+
 - Level 1: 10% (1-10 people)
 - Level 2: 8% (11-100 people)
 - Level 3: 6% (101-1,000 people)
@@ -109,12 +119,14 @@ tradnig/
 - Level 5: 2% (10,001-100,000 people)
 
 ✅ **Withdrawal Management**
+
 - Real-time pending requests
 - Approve/Reject/Mark as paid
 - Transaction tracking
 - Balance management
 
 ✅ **Security**
+
 - JWT authentication
 - Activity logging
 - Admin-only access
@@ -125,6 +137,7 @@ tradnig/
 ## 🛠 Tech Stack
 
 ### Backend
+
 - Node.js 18+
 - Express.js
 - PostgreSQL
@@ -133,6 +146,7 @@ tradnig/
 - Joi Validation
 
 ### Frontend
+
 - React 18
 - Vite
 - React Router v6
@@ -141,6 +155,7 @@ tradnig/
 - TailwindCSS
 
 ### DevOps
+
 - Docker & Docker Compose
 - PostgreSQL
 - Redis (optional)
@@ -176,35 +191,40 @@ tradnig/
 ## 📖 Documentation Guide
 
 ### For Installation
+
 → Read **SETUP.md**
 
 ### For API Usage
+
 → Read **API.md**
 
 ### For Configuration
+
 → Read **ENV_GUIDE.md**
 
 ### For Production
+
 → Read **DEPLOYMENT.md**
 
 ### For Project Details
+
 → Read **PROJECT_SUMMARY.md**
 
 ---
 
 ## 🎯 API Endpoints (30+)
 
-| Resource | Method | Endpoint |
-|----------|--------|----------|
-| Dashboard | GET | `/api/dashboard` |
-| Users | GET | `/api/users` |
-| Users | POST | `/api/users/:userId/adjust-balance` |
-| Payments | GET | `/api/payments` |
-| Payments | POST | `/api/payments` |
-| Referrals | GET | `/api/referrals` |
-| Withdrawals | GET | `/api/withdrawals` |
-| Commissions | GET | `/api/commissions` |
-| Logs | GET | `/api/logs` |
+| Resource    | Method | Endpoint                            |
+| ----------- | ------ | ----------------------------------- |
+| Dashboard   | GET    | `/api/dashboard`                    |
+| Users       | GET    | `/api/users`                        |
+| Users       | POST   | `/api/users/:userId/adjust-balance` |
+| Payments    | GET    | `/api/payments`                     |
+| Payments    | POST   | `/api/payments`                     |
+| Referrals   | GET    | `/api/referrals`                    |
+| Withdrawals | GET    | `/api/withdrawals`                  |
+| Commissions | GET    | `/api/commissions`                  |
+| Logs        | GET    | `/api/logs`                         |
 
 See API.md for complete list with examples.
 
@@ -213,6 +233,7 @@ See API.md for complete list with examples.
 ## 💻 Development Commands
 
 ### Backend
+
 ```bash
 cd backend
 npm install
@@ -222,6 +243,7 @@ NODE_ENV=production npm start
 ```
 
 ### Frontend
+
 ```bash
 cd frontend
 npm install
@@ -231,6 +253,7 @@ npm run preview
 ```
 
 ### Docker
+
 ```bash
 docker-compose build
 docker-compose up
@@ -263,17 +286,20 @@ docker-compose down
 ## 🐛 Common Issues
 
 ### Port Already in Use
+
 ```bash
 lsof -i :5000
 kill -9 <PID>
 ```
 
 ### Database Connection Failed
+
 - Check PostgreSQL is running
 - Verify credentials in .env
 - Ensure database exists
 
 ### CORS Errors
+
 - Check API_BASE in frontend .env
 - Verify CORS config in backend
 

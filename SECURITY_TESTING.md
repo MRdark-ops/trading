@@ -23,6 +23,7 @@ curl -X POST http://localhost:5001/api/auth/login \
 ```
 
 **الرد المتوقع:**
+
 ```json
 {
   "success": true,
@@ -90,6 +91,7 @@ curl -X GET http://localhost:5001/api/security/suspicious-activities \
 ```
 
 **ستجد:**
+
 ```json
 {
   "activities": [
@@ -123,6 +125,7 @@ curl -X POST http://localhost:5001/api/auth/login \
 ```
 
 **النتيجة المتوقعة:**
+
 ```json
 {
   "success": false,
@@ -138,6 +141,7 @@ curl -X GET http://localhost:5001/api/security/suspicious-activities \
 ```
 
 ستجد تهديد مع:
+
 - `type`: "INVALID_INPUT"
 - `severity`: "HIGH" أو "CRITICAL"
 
@@ -158,6 +162,7 @@ curl -X POST http://localhost:5001/api/auth/register \
 ```
 
 **النتيجة المتوقعة:**
+
 ```json
 {
   "success": false,
@@ -182,6 +187,7 @@ done
 ```
 
 **النتيجة المتوقعة على الطلب 101:**
+
 ```json
 {
   "success": false,
@@ -204,6 +210,7 @@ curl -X GET http://localhost:5001/api/security/fingerprint/1 \
 ```
 
 **الرد المتوقع:**
+
 ```json
 {
   "success": true,
@@ -246,6 +253,7 @@ curl -X POST http://localhost:5001/api/security/block-ip \
 ```
 
 **الرد:**
+
 ```json
 {
   "success": true,
@@ -262,6 +270,7 @@ curl -X GET http://localhost:5001/api/health \
 ```
 
 **النتيجة:**
+
 ```json
 {
   "success": false,
@@ -281,6 +290,7 @@ curl -X GET http://localhost:5001/api/security/status \
 ```
 
 **الرد المتوقع:**
+
 ```json
 {
   "success": true,
@@ -316,6 +326,7 @@ curl -X GET http://localhost:5001/api/security/user-activities/1 \
 ```
 
 **الرد المتوقع:**
+
 ```json
 {
   "success": true,
@@ -355,6 +366,7 @@ curl -X GET http://localhost:5001/api/security/suspicious-activities \
 ```
 
 **الرد:**
+
 ```json
 {
   "success": true,
@@ -384,24 +396,25 @@ curl -X GET http://localhost:5001/api/security/suspicious-activities \
 
 ## 📊 ملخص النتائج المتوقعة
 
-| الاختبار | النتيجة | الحالة |
-|---------|--------|--------|
-| 1. المصادقة الآمنة | دخول ناجح + بصمة رقمية | ✅ |
-| 2. Brute Force | قفل الحساب بعد 5 محاولات | ✅ |
-| 3. SQL Injection | رفع الطلب | ✅ |
-| 4. XSS Attack | رفع الطلب | ✅ |
-| 5. Rate Limiting | 429 Too Many Requests | ✅ |
-| 6. Digital Fingerprinting | عرض البصمات المختلفة | ✅ |
-| 7. IP Blocking | حظر تلقائي | ✅ |
-| 8. Security Dashboard | عرض الإحصائيات | ✅ |
-| 9. Activity Logging | تسجيل كل نشاط | ✅ |
-| 10. Threat Detection | كشف التهديدات | ✅ |
+| الاختبار                  | النتيجة                  | الحالة |
+| ------------------------- | ------------------------ | ------ |
+| 1. المصادقة الآمنة        | دخول ناجح + بصمة رقمية   | ✅     |
+| 2. Brute Force            | قفل الحساب بعد 5 محاولات | ✅     |
+| 3. SQL Injection          | رفع الطلب                | ✅     |
+| 4. XSS Attack             | رفع الطلب                | ✅     |
+| 5. Rate Limiting          | 429 Too Many Requests    | ✅     |
+| 6. Digital Fingerprinting | عرض البصمات المختلفة     | ✅     |
+| 7. IP Blocking            | حظر تلقائي               | ✅     |
+| 8. Security Dashboard     | عرض الإحصائيات           | ✅     |
+| 9. Activity Logging       | تسجيل كل نشاط            | ✅     |
+| 10. Threat Detection      | كشف التهديدات            | ✅     |
 
 ---
 
 ## 🎓 ملاحظات مهمة
 
 ### ✅ علامات النظام الصحيحة:
+
 1. تسجيل الأنشطة يتم فوراً
 2. التهديدات تُكتشف في الحال
 3. IP تُحظر دون تأخير
@@ -409,6 +422,7 @@ curl -X GET http://localhost:5001/api/security/suspicious-activities \
 5. كل طلب يحتوي على معرّف فريد
 
 ### ⚠️ علامات تحذيرية:
+
 1. عدم تسجيل الأنشطة ❌
 2. التهديدات لا تُكتشف ❌
 3. IP محظورة لكن تزال تعمل ❌

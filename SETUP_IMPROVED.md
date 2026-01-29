@@ -4,17 +4,18 @@
 
 This platform has **3 separate services** that communicate with each other:
 
-| Service | Port | Purpose |
-|---------|------|---------|
+| Service             | Port | Purpose                      |
+| ------------------- | ---- | ---------------------------- |
 | 📱 Customer Website | 3000 | Affiliate marketing platform |
-| 🛠️ Admin Dashboard | 5173 | Admin management panel |
-| 🔌 Mock API Server | 5001 | Backend with all endpoints |
+| 🛠️ Admin Dashboard  | 5173 | Admin management panel       |
+| 🔌 Mock API Server  | 5001 | Backend with all endpoints   |
 
 **No database setup required** - everything uses an in-memory mock database!
 
 ## 🚀 Quick Start (2 Minutes)
 
 ### Prerequisites
+
 - Node.js 16+ installed
 - 3 Terminal windows (or tabs in VS Code)
 
@@ -56,17 +57,17 @@ All servers will start automatically! Watch the terminals for confirmations.
 
 Open these in your browser:
 
-| Application | URL | Login Credentials |
-|-------------|-----|-------------------|
-| **Customer Website** | http://localhost:3000 | Create new account |
-| **Admin Dashboard** | http://localhost:5173 | admin@tradingdz.com / admin123 |
-| **API Server** | http://localhost:5001 | (Backend only) |
+| Application          | URL                   | Login Credentials              |
+| -------------------- | --------------------- | ------------------------------ |
+| **Customer Website** | http://localhost:3000 | Create new account             |
+| **Admin Dashboard**  | http://localhost:5173 | admin@tradingdz.com / admin123 |
+| **API Server**       | http://localhost:5001 | (Backend only)                 |
 
 ## 🔐 Admin Login (Pre-filled in Form)
 
 When you open the Admin Dashboard at http://localhost:5173, you'll see:
 
-- **Email:** admin@tradingdz.com  
+- **Email:** admin@tradingdz.com
 - **Password:** admin123
 - **Status:** Pre-filled for quick testing ✨
 
@@ -75,24 +76,28 @@ The login form displays these credentials in a highlighted box so you don't need
 ## 💡 Test Features
 
 ### 1. Customer Registration
+
 1. Go to http://localhost:3000
 2. Click "Register"
 3. Fill in your details
 4. Submit - you'll be registered!
 
 ### 2. Customer Login
+
 1. Use the credentials you registered with
 2. Access your dashboard
 3. View referral links
 4. Manage payments
 
 ### 3. Admin Access
+
 1. Go to http://localhost:5173
 2. Credentials are pre-filled
 3. Manage all users and payments
 4. View system statistics
 
 ### 4. Check API Logs
+
 Watch the Terminal 1 (Backend) - every request is logged with emojis!
 
 ## 📁 Project Structure
@@ -129,11 +134,12 @@ tradnig/
 Customer Website (3000)     Admin Dashboard (5173)
         ↓                           ↓
         └─────→ Mock API (5001) ←──┘
-              
+
               In-Memory Database
 ```
 
 Both frontends send requests to port 5001. Responses come back with:
+
 - User data
 - Payment information
 - Referral statistics
@@ -142,6 +148,7 @@ Both frontends send requests to port 5001. Responses come back with:
 ## 📝 Key Features
 
 ### ✅ Customer Website
+
 - 📱 Responsive design (mobile-first)
 - 🔐 User authentication with JWT
 - 💳 Payment management
@@ -151,6 +158,7 @@ Both frontends send requests to port 5001. Responses come back with:
 - 🌐 Arabic language support
 
 ### ✅ Admin Dashboard
+
 - 👥 User management (view, edit, delete)
 - 💰 Payment tracking & verification
 - 📈 Commission calculations
@@ -162,6 +170,7 @@ Both frontends send requests to port 5001. Responses come back with:
 - 🌍 Arabic labels on login page
 
 ### ✅ Mock API Server
+
 - 15+ RESTful endpoints
 - JWT authentication
 - User registration & login
@@ -198,13 +207,17 @@ GET    /api/commissions/calculate  - Calculate commissions
 ## 🛠️ Troubleshooting
 
 ### Issue: "Cannot connect to API"
-**Solution:** 
+
+**Solution:**
+
 - Make sure backend is running on port 5001
 - Check Terminal 1 for error messages
 - Refresh your browser (Ctrl+F5)
 
 ### Issue: "Port 3000 already in use"
+
 **Solution:**
+
 ```bash
 # Find what's using the port (Windows)
 netstat -ano | findstr :3000
@@ -214,19 +227,25 @@ taskkill /PID <PID> /F
 ```
 
 ### Issue: "Login not working"
+
 **Solution:**
+
 - Check browser console (F12)
 - Ensure backend is running
 - Try refreshing the page
 - Check the credentials are correct
 
 ### Issue: "CORS error"
+
 **Solution:**
+
 - Backend has CORS enabled by default
 - Make sure you're using `http://localhost` (not 127.0.0.1)
 
 ### Issue: "Dependencies not installed"
+
 **Solution:**
+
 ```bash
 # In each folder (backend, website, frontend)
 rm -rf node_modules package-lock.json
@@ -236,6 +255,7 @@ npm install
 ## 🔍 Debugging Tips
 
 ### Enable Browser Console Logging
+
 - Open browser DevTools (F12)
 - Go to Console tab
 - You'll see detailed logs when:
@@ -244,11 +264,13 @@ npm install
   - Receiving responses
 
 ### Watch Backend Logs
+
 - Terminal 1 shows all API requests
 - Look for emoji indicators (✅ for success, ❌ for errors)
 - Useful for debugging authentication issues
 
 ### Check Network Requests
+
 - DevTools → Network tab
 - Click on API requests
 - View request/response headers and body
@@ -256,6 +278,7 @@ npm install
 ## 📦 Technology Stack
 
 ### Frontend (Customer Website)
+
 - React 18
 - Vite build tool
 - React Router v6
@@ -263,6 +286,7 @@ npm install
 - Custom CSS3 styling
 
 ### Frontend (Admin Dashboard)
+
 - React 18
 - Vite build tool
 - React Router v6
@@ -272,6 +296,7 @@ npm install
 - Lucide React icons
 
 ### Backend
+
 - Node.js
 - Express.js
 - In-memory database (mock)
@@ -309,6 +334,7 @@ After running everything successfully:
 ## 💾 Data Storage
 
 All data is stored **in-memory only**. This means:
+
 - ✅ Fast performance
 - ✅ No database setup needed
 - ✅ Perfect for testing
@@ -316,6 +342,7 @@ All data is stored **in-memory only**. This means:
 - ❌ Not suitable for production
 
 To make it persistent, you'd need to:
+
 1. Install PostgreSQL
 2. Update backend to use real database
 3. Create migrations
@@ -341,6 +368,7 @@ A: Edit the CSS files in `website/src/` and `frontend/src/pages/`
 ## 🎓 Learning & Development
 
 This project demonstrates:
+
 - JWT authentication flows
 - React hooks and state management
 - API integration patterns

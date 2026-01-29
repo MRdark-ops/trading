@@ -16,12 +16,14 @@
 ### 1. Install Dependencies
 
 **Backend:**
+
 ```bash
 cd backend
 npm install
 ```
 
 **Frontend:**
+
 ```bash
 cd frontend
 npm install
@@ -30,12 +32,14 @@ npm install
 ### 2. Configure Environment
 
 **Backend (.env):**
+
 ```bash
 cp backend/.env.example backend/.env
 # Edit backend/.env with your settings
 ```
 
 **Frontend (.env):**
+
 ```bash
 echo 'VITE_API_BASE=http://localhost:5000/api' > frontend/.env
 ```
@@ -43,6 +47,7 @@ echo 'VITE_API_BASE=http://localhost:5000/api' > frontend/.env
 ### 3. Database Setup
 
 **Create Database:**
+
 ```bash
 psql -U postgres
 CREATE DATABASE trading_platform_db;
@@ -50,6 +55,7 @@ CREATE DATABASE trading_platform_db;
 ```
 
 **Initialize Schema:**
+
 ```bash
 # Sequelize will auto-create tables on startup
 cd backend
@@ -59,6 +65,7 @@ npm run dev
 ### 4. Run Applications
 
 **Terminal 1 - Backend:**
+
 ```bash
 cd backend
 npm run dev
@@ -66,6 +73,7 @@ npm run dev
 ```
 
 **Terminal 2 - Frontend:**
+
 ```bash
 cd frontend
 npm run dev
@@ -77,32 +85,38 @@ npm run dev
 ## Docker Deployment (Recommended)
 
 ### 1. Ensure Docker is Installed
+
 ```bash
 docker --version
 docker-compose --version
 ```
 
 ### 2. Build Images
+
 ```bash
 docker-compose build
 ```
 
 ### 3. Start Services
+
 ```bash
 docker-compose up -d
 ```
 
 ### 4. Initialize Database
+
 ```bash
 docker-compose exec backend node scripts/seed.js
 ```
 
 ### 5. Access Application
+
 - Frontend: http://localhost:3000
 - API: http://localhost:5000/api
 - Database: localhost:5432
 
 ### 6. View Logs
+
 ```bash
 docker-compose logs -f backend
 docker-compose logs -f frontend
@@ -115,16 +129,19 @@ docker-compose logs -f frontend
 ### Backend Deployment
 
 #### 1. Create Heroku App
+
 ```bash
 heroku create your-app-name-api
 ```
 
 #### 2. Add PostgreSQL
+
 ```bash
 heroku addons:create heroku-postgresql:hobby-dev -a your-app-name-api
 ```
 
 #### 3. Set Environment Variables
+
 ```bash
 heroku config:set -a your-app-name-api \
   JWT_SECRET=your_production_secret \
@@ -135,6 +152,7 @@ heroku config:set -a your-app-name-api \
 ```
 
 #### 4. Deploy Backend
+
 ```bash
 cd backend
 heroku git:remote -a your-app-name-api
@@ -144,28 +162,33 @@ git push heroku main
 ### Frontend Deployment
 
 #### 1. Build Frontend
+
 ```bash
 cd frontend
 npm run build
 ```
 
 #### 2. Create Heroku App
+
 ```bash
 heroku create your-app-name
 ```
 
 #### 3. Add Buildpack
+
 ```bash
 heroku buildpacks:add heroku/nodejs -a your-app-name
 ```
 
 #### 4. Set Environment Variables
+
 ```bash
 heroku config:set -a your-app-name \
   VITE_API_BASE=https://your-app-name-api.herokuapp.com/api
 ```
 
 #### 5. Deploy Frontend
+
 ```bash
 cd frontend
 git push heroku main
@@ -176,17 +199,20 @@ git push heroku main
 ## Production Deployment (AWS EC2)
 
 ### 1. Launch EC2 Instance
+
 - Ubuntu 20.04 LTS
 - t3.micro (free tier) or larger
 - Open ports: 80, 443, 5000, 3000
 - Security group with HTTPS enabled
 
 ### 2. Connect to Instance
+
 ```bash
 ssh -i your-key.pem ubuntu@your-instance-ip
 ```
 
 ### 3. Install Dependencies
+
 ```bash
 sudo apt update
 sudo apt install -y nodejs npm postgresql postgresql-contrib redis-server nginx git
@@ -197,12 +223,14 @@ sudo apt-get install -y nodejs
 ```
 
 ### 4. Clone Repository
+
 ```bash
 git clone https://github.com/your-repo/trading-platform.git
 cd trading-platform
 ```
 
 ### 5. Configure PostgreSQL
+
 ```bash
 sudo su - postgres
 createdb trading_platform_db
@@ -214,6 +242,7 @@ exit
 ```
 
 ### 6. Deploy Backend
+
 ```bash
 cd backend
 npm install
@@ -224,6 +253,7 @@ npm start
 ```
 
 ### 7. Setup Nginx Reverse Proxy
+
 ```bash
 sudo nano /etc/nginx/sites-available/trading-api
 
@@ -231,7 +261,7 @@ sudo nano /etc/nginx/sites-available/trading-api
 server {
     listen 5000;
     server_name your-domain.com;
-    
+
     location / {
         proxy_pass http://localhost:5000;
         proxy_http_version 1.1;
@@ -244,6 +274,7 @@ server {
 ```
 
 ### 8. Deploy Frontend
+
 ```bash
 cd ../frontend
 npm install
@@ -253,12 +284,14 @@ npx serve -s dist -l 3000
 ```
 
 ### 9. Setup SSL with Let's Encrypt
+
 ```bash
 sudo apt install certbot python3-certbot-nginx
 sudo certbot certonly --standalone -d your-domain.com
 ```
 
 ### 10. Enable Systemd Services
+
 ```bash
 # Backend service
 sudo nano /etc/systemd/system/trading-backend.service
@@ -287,12 +320,14 @@ sudo systemctl start trading-backend.service
 ## Production Deployment (DigitalOcean)
 
 ### 1. Create Droplet
+
 - Ubuntu 20.04 LTS
 - $5/month (1GB RAM, 1 vCPU)
 - Enable backups
 - Add SSH key
 
 ### 2. Initial Setup
+
 ```bash
 ssh root@your_droplet_ip
 
@@ -311,6 +346,7 @@ su - ubuntu
 ```
 
 ### 3. Clone and Deploy
+
 ```bash
 git clone https://github.com/your-repo/trading-platform.git
 cd trading-platform
@@ -328,6 +364,7 @@ npx serve -s dist
 ```
 
 ### 4. Configure App Platform (Alternative)
+
 - Use DigitalOcean App Platform for easier deployment
 - Connect GitHub repository
 - Automatic deployments on push
@@ -338,17 +375,20 @@ npx serve -s dist
 ## Production Deployment (AWS RDS + Lambda + S3)
 
 ### 1. Create RDS PostgreSQL Instance
+
 - Multi-AZ enabled
 - Automated backups
 - Enhanced monitoring
 - Security group with app access
 
 ### 2. Create Lambda Functions
+
 - Backend API as Lambda functions
 - API Gateway for routing
 - Auto-scaling
 
 ### 3. Deploy Frontend to S3 + CloudFront
+
 ```bash
 # Build frontend
 cd frontend
@@ -362,6 +402,7 @@ aws s3 sync dist/ s3://your-bucket-name
 ```
 
 ### 4. Configure Auto Scaling
+
 - Target group health checks
 - Load balancer
 - Auto-scaling policies
@@ -371,6 +412,7 @@ aws s3 sync dist/ s3://your-bucket-name
 ## Monitoring & Maintenance
 
 ### 1. Setup Monitoring
+
 ```bash
 # Install PM2 for process management
 npm install -g pm2
@@ -380,6 +422,7 @@ pm2 startup
 ```
 
 ### 2. View Logs
+
 ```bash
 pm2 logs
 journalctl -u trading-backend.service
@@ -387,6 +430,7 @@ tail -f /var/log/nginx/access.log
 ```
 
 ### 3. Database Backups
+
 ```bash
 # Automated backup script
 sudo nano /usr/local/bin/backup-db.sh
@@ -400,6 +444,7 @@ sudo crontab -e
 ```
 
 ### 4. SSL Certificate Renewal
+
 ```bash
 sudo certbot renew --quiet  # Automatic with systemd timer
 ```
@@ -409,6 +454,7 @@ sudo certbot renew --quiet  # Automatic with systemd timer
 ## Performance Optimization
 
 ### 1. Database Optimization
+
 ```sql
 -- Add indexes
 CREATE INDEX idx_users_email ON users(email);
@@ -421,18 +467,21 @@ EXPLAIN ANALYZE SELECT * FROM users WHERE email = 'test@example.com';
 ```
 
 ### 2. Cache Strategy
+
 - Redis for sessions
 - Cache dashboard stats
 - Cache user counts
 - Cache top referrers
 
 ### 3. API Optimization
+
 - Pagination on all endpoints
 - Field limiting in queries
 - Compression (gzip)
 - Connection pooling
 
 ### 4. Frontend Optimization
+
 - Code splitting
 - Lazy loading
 - Image optimization
@@ -443,6 +492,7 @@ EXPLAIN ANALYZE SELECT * FROM users WHERE email = 'test@example.com';
 ## Security Hardening
 
 ### 1. Firewall Rules
+
 ```bash
 sudo ufw allow 22/tcp
 sudo ufw allow 80/tcp
@@ -452,23 +502,27 @@ sudo ufw enable
 ```
 
 ### 2. SSL/HTTPS
+
 - Get certificate from Let's Encrypt
 - Auto-renewal with certbot
 - HTTP to HTTPS redirect
 
 ### 3. Database Security
+
 - Change default password
 - Use role-based access
 - Enable SSL connections
 - Regular backups
 
 ### 4. API Security
+
 - Rate limiting
 - CORS properly configured
 - Input validation
 - SQL injection prevention
 
 ### 5. Environment Variables
+
 - Use `.env` files
 - Never commit secrets
 - Use environment management
@@ -479,26 +533,27 @@ sudo ufw enable
 ## CI/CD Pipeline (GitHub Actions)
 
 ### .github/workflows/deploy.yml
+
 ```yaml
 name: Deploy
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - uses: actions/checkout@v2
-    
-    - name: Deploy to Heroku
-      uses: akhileshns/heroku-deploy@v3.12.12
-      with:
-        heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-        heroku_app_name: "your-app-name"
-        heroku_email: "your-email@example.com"
+      - uses: actions/checkout@v2
+
+      - name: Deploy to Heroku
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: "your-app-name"
+          heroku_email: "your-email@example.com"
 ```
 
 ---
@@ -506,12 +561,14 @@ jobs:
 ## Health Checks
 
 ### Backend Health Check
+
 ```bash
 curl http://localhost:5000/api/health
 # Response: { "status": "OK" }
 ```
 
 ### Monitor with Uptime Robot
+
 - Add /api/health endpoint
 - Check every 5 minutes
 - Get alerts if down
@@ -521,6 +578,7 @@ curl http://localhost:5000/api/health
 ## Disaster Recovery
 
 ### 1. Database Backup
+
 ```bash
 # Automated daily backups
 pg_dump trading_platform_db | gzip > /backups/backup-$(date +%Y%m%d).sql.gz
@@ -530,11 +588,13 @@ aws s3 cp backup-20240115.sql.gz s3://your-bucket/backups/
 ```
 
 ### 2. Restore from Backup
+
 ```bash
 gunzip < /backups/backup-20240115.sql.gz | psql trading_platform_db
 ```
 
 ### 3. Application Rollback
+
 ```bash
 git revert <commit-hash>
 git push
@@ -546,12 +606,14 @@ git push
 ## Troubleshooting Deployment
 
 ### Port Already in Use
+
 ```bash
 lsof -i :5000
 kill -9 <PID>
 ```
 
 ### Database Connection Error
+
 ```bash
 # Check PostgreSQL status
 sudo systemctl status postgresql
@@ -561,12 +623,14 @@ psql -U postgres -h localhost trading_platform_db
 ```
 
 ### Nginx Configuration Error
+
 ```bash
 sudo nginx -t
 sudo systemctl restart nginx
 ```
 
 ### Permission Denied Errors
+
 ```bash
 sudo chown -R ubuntu:ubuntu /path/to/app
 chmod -R 755 /path/to/app
