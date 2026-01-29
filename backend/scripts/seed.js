@@ -1,9 +1,8 @@
 require('dotenv').config();
 const sequelize = require('../config/database');
-const { User, Payment, Referral } = require('../models');
+const { User, Referral } = require('../models');
 const { seedAdminUser, seedUsers } = require('../seeds/initial');
 const { v4: uuidv4 } = require('uuid');
-const bcrypt = require('bcryptjs');
 
 async function seed() {
   try {

@@ -2,10 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Referral = require('../models/Referral');
 const User = require('../models/User');
-const Payment = require('../models/Payment');
-const { Sequelize } = require('sequelize');
 const { authMiddleware, adminMiddleware } = require('../middleware/auth');
-const { logAdminAction } = require('../utils/logger');
 
 // Get referral data for a user
 router.get('/user/:userId', authMiddleware, adminMiddleware, async (req, res) => {
