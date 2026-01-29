@@ -83,7 +83,7 @@ class ActivityLogger {
       this.logs[userId] = this.logs[userId].slice(-1000);
     }
 
-    console.log(`📝 Activity logged:`, logEntry);
+    console.log('📝 Activity logged:', logEntry);
     return logEntry;
   }
 
@@ -328,7 +328,7 @@ class TokenManager {
   revokeToken(token) {
     this.revokedTokens.add(token);
     delete this.tokens[token];
-    console.log(`🔒 Token revoked`);
+    console.log('🔒 Token revoked');
   }
 
   revokeUserTokens(userId) {
