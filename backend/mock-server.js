@@ -653,7 +653,7 @@ app.post('/api/withdrawal/request', verifyToken, (req, res) => {
 
     withdrawalRequests[withdrawalId] = withdrawal;
 
-    console.log(`✅ Withdrawal request created:`, withdrawal);
+    console.log('✅ Withdrawal request created:', withdrawal);
 
     res.json({
       success: true,
@@ -829,7 +829,7 @@ app.post('/api/admin/withdrawal/approve/:withdrawalId', verifyToken, adminOnly, 
     withdrawal.status = 'completed';
     withdrawal.completedAt = new Date().toISOString();
 
-    console.log(`✅ Admin approved withdrawal:`, withdrawal);
+    console.log('✅ Admin approved withdrawal:', withdrawal);
 
     res.json({
       success: true,
@@ -862,7 +862,7 @@ app.post('/api/admin/withdrawal/reject/:withdrawalId', verifyToken, adminOnly, (
     withdrawal.reason = reason || 'No reason provided';
     withdrawal.rejectedAt = new Date().toISOString();
 
-    console.log(`❌ Admin rejected withdrawal:`, withdrawal);
+    console.log('❌ Admin rejected withdrawal:', withdrawal);
 
     res.json({
       success: true,
