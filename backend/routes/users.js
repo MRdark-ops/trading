@@ -1,12 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
-const Payment = require('../models/Payment');
-const Referral = require('../models/Referral');
 const { authMiddleware, adminMiddleware } = require('../middleware/auth');
-const { logAdminAction } = require('../utils/logger');
-const { calculateTotalEarnings } = require('../utils/commissionCalculator');
-const { Sequelize } = require('sequelize');
 
 // Get all users with pagination
 router.get('/', authMiddleware, adminMiddleware, async (req, res) => {

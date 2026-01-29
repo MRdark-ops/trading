@@ -350,19 +350,6 @@ let telegramAccess = {
   }
 };
 
-const mockToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzAzNzM5MTQwLCJleHAiOjE3MDM4MjU1NDB9.test';
-
-// Helper function to generate token with user info
-function generateToken(user) {
-  return `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.${Buffer.from(JSON.stringify({
-    id: user.id,
-    email: user.email,
-    role: user.role || 'user',
-    iat: Math.floor(Date.now() / 1000),
-    exp: Math.floor(Date.now() / 1000) + (7 * 24 * 60 * 60) // 7 days
-  })).toString('base64')}.test`;
-}
-
 // Auth Routes - with Security
 app.post('/api/auth/register', (req, res) => {
   try {
