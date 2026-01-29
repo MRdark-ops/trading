@@ -10,7 +10,7 @@ A full-stack trading platform with customer website, admin dashboard, and API.
 # Terminal 1: Backend API (Port 5001)
 cd backend && node mock-server.js
 
-# Terminal 2: Customer Website (Port 3000)  
+# Terminal 2: Customer Website (Port 3000)
 cd website && npm run dev
 
 # Terminal 3: Admin Dashboard (Port 5173)
@@ -18,6 +18,7 @@ cd frontend && npm run dev
 ```
 
 Then open:
+
 - **Website:** http://localhost:3000
 - **Admin:** http://localhost:5173 (admin@tradingdz.com / admin123 - pre-filled!)
 
@@ -28,6 +29,7 @@ Then open:
 ## 📱 What's Included
 
 ### Customer Website (Port 3000)
+
 - 9 complete pages (Home, Register, Login, Dashboard, Payment, Referrals, Terms, Privacy, 404)
 - User registration & authentication
 - Payment management
@@ -36,6 +38,7 @@ Then open:
 - Arabic language support
 
 ### Admin Dashboard (Port 5173) ✨ Just Improved!
+
 - 8 complete pages (Dashboard, Users, Payments, Referrals, Withdrawals, Commissions, Logs, Login)
 - User management & analytics
 - Payment verification & tracking
@@ -50,6 +53,7 @@ Then open:
   - ⚡ Smooth animations
 
 ### Backend API (Port 5001)
+
 - 15+ RESTful endpoints
 - JWT authentication
 - In-memory database (no setup needed)
@@ -69,47 +73,52 @@ Then open:
 ✅ **Security:** JWT authentication, protected routes, error handling  
 ✅ **Design:** Professional UI, responsive, mobile-friendly, gold theme  
 ✅ **Internationalization:** Arabic language support throughout  
-✅ **Analytics:** Charts, statistics, detailed logging  
+✅ **Analytics:** Charts, statistics, detailed logging
 
 ---
 
 ## 📊 Project Stats
 
-| Metric | Value |
-|--------|-------|
-| **Pages Built** | 17 (9 customer + 8 admin) |
-| **API Endpoints** | 15+ |
-| **Components** | 15+ |
-| **CSS Files** | 23+ |
-| **Code Lines** | 6500+ |
-| **Servers** | 3 simultaneous |
-| **Setup Time** | 2 minutes |
-| **Documentation** | 10+ guides |
+| Metric            | Value                     |
+| ----------------- | ------------------------- |
+| **Pages Built**   | 17 (9 customer + 8 admin) |
+| **API Endpoints** | 15+                       |
+| **Components**    | 15+                       |
+| **CSS Files**     | 23+                       |
+| **Code Lines**    | 6500+                     |
+| **Servers**       | 3 simultaneous            |
+| **Setup Time**    | 2 minutes                 |
+| **Documentation** | 10+ guides                |
 
 ---
 
 ## 🎯 Quick Features
 
 ### 🔐 Admin Credentials
+
 ```
 Email:    admin@tradingdz.com
 Password: admin123
 ```
+
 Pre-filled in the form for easy testing!
 
 ### 🌍 Language Support
+
 - English (default)
 - Arabic (labels on all forms)
 - Bilingual navigation
 - Support for RTL languages
 
 ### 🎨 Design
+
 - Luxury gold (#d4af37) and black theme
 - Fully responsive (desktop, tablet, mobile)
 - Professional animations
 - Modern UI/UX
 
 ### 🔌 Technology
+
 - React 18 + Vite
 - Node.js + Express
 - Axios HTTP client
@@ -122,13 +131,13 @@ Pre-filled in the form for easy testing!
 
 ## 📚 Documentation
 
-| Document | Purpose |
-|----------|---------|
-| **QUICK_START_5MIN.md** | 5-minute setup guide |
-| **GETTING_STARTED.md** | Detailed quick start |
-| **PROJECT_STRUCTURE.md** | Complete overview |
-| **LOGIN_PAGE_IMPROVEMENTS.md** | What's new in login |
-| **DOCUMENTATION_INDEX.md** | Guide to all docs |
+| Document                       | Purpose              |
+| ------------------------------ | -------------------- |
+| **QUICK_START_5MIN.md**        | 5-minute setup guide |
+| **GETTING_STARTED.md**         | Detailed quick start |
+| **PROJECT_STRUCTURE.md**       | Complete overview    |
+| **LOGIN_PAGE_IMPROVEMENTS.md** | What's new in login  |
+| **DOCUMENTATION_INDEX.md**     | Guide to all docs    |
 
 👉 **Start here:** [QUICK_START_5MIN.md](QUICK_START_5MIN.md)
 
@@ -137,17 +146,20 @@ Pre-filled in the form for easy testing!
 ## 🛠️ Troubleshooting
 
 ### Port Already in Use (Windows)
+
 ```powershell
 netstat -ano | findstr :3000
 taskkill /PID <PID> /F
 ```
 
 ### Can't Connect to API
+
 - Ensure backend is running on port 5001
 - Check backend terminal for errors
 - Refresh browser (Ctrl+F5)
 
 ### Dependencies Not Installed
+
 ```bash
 rm -rf node_modules package-lock.json
 npm install
@@ -166,7 +178,7 @@ See **GETTING_STARTED.md** for more troubleshooting.
 ✅ Understanding responsive design  
 ✅ Portfolio projects  
 ✅ Team onboarding  
-✅ Production deployment  
+✅ Production deployment
 
 ---
 
@@ -212,6 +224,7 @@ See **GETTING_STARTED.md** for more troubleshooting.
 
 **Before:** Simple login form  
 **After:** Professional form with:
+
 - 🌍 Arabic language support
 - 📧 Pre-filled test credentials
 - 👁️ Show/hide password
@@ -238,7 +251,7 @@ See **GETTING_STARTED.md** for more troubleshooting.
 ✅ No PostgreSQL needed  
 ✅ Instant startup  
 ✅ Perfect for testing  
-✅ Can be upgraded to real DB  
+✅ Can be upgraded to real DB
 
 ---
 
@@ -250,7 +263,7 @@ See **GETTING_STARTED.md** for more troubleshooting.
 ✅ Protected routes  
 ✅ Error message sanitization  
 ✅ Auto-logout on errors  
-✅ Token expiration  
+✅ Token expiration
 
 ---
 
@@ -331,16 +344,19 @@ You have a **complete, professional trading platform** ready to:
 ## 🎓 Learning Path
 
 **Beginner (1 hour):**
+
 - Run the app
 - Explore UI
 - Read QUICK_START_5MIN.md
 
 **Intermediate (3 hours):**
+
 - Study PROJECT_STRUCTURE.md
 - Explore source code
 - Modify login page colors
 
 **Advanced (5+ hours):**
+
 - Deep dive into code
 - Add new features
 - Prepare for production

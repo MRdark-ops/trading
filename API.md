@@ -1,6 +1,7 @@
 # API Documentation
 
 ## Base URL
+
 ```
 http://localhost:5000/api
 ```
@@ -10,6 +11,7 @@ http://localhost:5000/api
 All endpoints require JWT authentication (except login/register).
 
 ### Headers
+
 ```
 Authorization: Bearer <JWT_TOKEN>
 Content-Type: application/json
@@ -20,9 +22,11 @@ Content-Type: application/json
 ## Authentication Endpoints
 
 ### Login
+
 **POST** `/auth/login`
 
 Request:
+
 ```json
 {
   "email": "admin@example.com",
@@ -31,6 +35,7 @@ Request:
 ```
 
 Response (200):
+
 ```json
 {
   "token": "eyJhbGciOiJIUzI1NiIs...",
@@ -43,9 +48,11 @@ Response (200):
 ```
 
 ### Register Admin
+
 **POST** `/auth/register`
 
 Request:
+
 ```json
 {
   "email": "newadmin@example.com",
@@ -55,6 +62,7 @@ Request:
 ```
 
 Response (201):
+
 ```json
 {
   "message": "Admin created successfully",
@@ -67,9 +75,11 @@ Response (201):
 ```
 
 ### Get Current User
+
 **GET** `/auth/me`
 
 Response (200):
+
 ```json
 {
   "id": "uuid",
@@ -80,9 +90,11 @@ Response (200):
 ```
 
 ### Logout
+
 **POST** `/auth/logout`
 
 Response (200):
+
 ```json
 {
   "message": "Logged out successfully"
@@ -94,9 +106,11 @@ Response (200):
 ## Dashboard Endpoints
 
 ### Get Overview
+
 **GET** `/dashboard`
 
 Response (200):
+
 ```json
 {
   "overview": {
@@ -106,7 +120,7 @@ Response (200):
     "externalMembers": 105,
     "totalPaidSubscriptions": 120,
     "totalRenewals": 30,
-    "totalRevenue": 30000.50,
+    "totalRevenue": 30000.5,
     "totalReferralCommissionsPaid": 5250.75,
     "pendingWithdrawals": 5
   },
@@ -115,9 +129,11 @@ Response (200):
 ```
 
 ### Get Growth Data
+
 **GET** `/dashboard/growth`
 
 Response (200):
+
 ```json
 [
   {
@@ -132,9 +148,11 @@ Response (200):
 ```
 
 ### Get Top Referrers
+
 **GET** `/dashboard/top-referrers`
 
 Response (200):
+
 ```json
 [
   {
@@ -156,9 +174,11 @@ Response (200):
 ## User Endpoints
 
 ### List Users
+
 **GET** `/users`
 
 Query Parameters:
+
 - `page` (default: 1)
 - `limit` (default: 20)
 - `status` (Active, Suspended, Banned)
@@ -166,6 +186,7 @@ Query Parameters:
 - `subscriptionStatus` (Free, Active, Expired)
 
 Response (200):
+
 ```json
 {
   "total": 150,
@@ -180,8 +201,8 @@ Response (200):
       "fullName": "John Doe",
       "status": "Active",
       "userType": "External Member",
-      "currentBalance": 100.50,
-      "totalEarnings": 500.00,
+      "currentBalance": 100.5,
+      "totalEarnings": 500.0,
       "registrationDate": "2024-01-10T10:00:00Z"
     }
   ]
@@ -189,9 +210,11 @@ Response (200):
 ```
 
 ### Get User Details
+
 **GET** `/users/:userId`
 
 Response (200):
+
 ```json
 {
   "user": {
@@ -222,9 +245,11 @@ Response (200):
 ```
 
 ### Update User
+
 **PUT** `/users/:userId`
 
 Request:
+
 ```json
 {
   "fullName": "John Updated",
@@ -235,6 +260,7 @@ Request:
 ```
 
 Response (200):
+
 ```json
 {
   "message": "User updated successfully",
@@ -243,9 +269,11 @@ Response (200):
 ```
 
 ### Change User Status
+
 **PATCH** `/users/:userId/status`
 
 Request:
+
 ```json
 {
   "status": "Suspended"
@@ -255,6 +283,7 @@ Request:
 Values: `Active`, `Suspended`, `Banned`
 
 Response (200):
+
 ```json
 {
   "message": "User status updated",
@@ -263,9 +292,11 @@ Response (200):
 ```
 
 ### Change User Type
+
 **PATCH** `/users/:userId/type`
 
 Request:
+
 ```json
 {
   "userType": "Internal Member"
@@ -275,6 +306,7 @@ Request:
 Values: `External Member`, `Internal Member`
 
 Response (200):
+
 ```json
 {
   "message": "User type updated",
@@ -283,9 +315,11 @@ Response (200):
 ```
 
 ### Reset User Earnings
+
 **POST** `/users/:userId/reset-earnings`
 
 Response (200):
+
 ```json
 {
   "message": "User earnings reset",
@@ -297,22 +331,25 @@ Response (200):
 ```
 
 ### Adjust User Balance
+
 **POST** `/users/:userId/adjust-balance`
 
 Request:
+
 ```json
 {
-  "amount": 50.00,
+  "amount": 50.0,
   "reason": "Manual adjustment for promotion"
 }
 ```
 
 Response (200):
+
 ```json
 {
   "message": "Balance adjusted",
   "user": {
-    "currentBalance": 150.00
+    "currentBalance": 150.0
   }
 }
 ```
@@ -322,9 +359,11 @@ Response (200):
 ## Payment Endpoints
 
 ### List Payments
+
 **GET** `/payments`
 
 Query Parameters:
+
 - `page` (default: 1)
 - `limit` (default: 20)
 - `type` (First Payment, Renewal)
@@ -332,6 +371,7 @@ Query Parameters:
 - `userId`
 
 Response (200):
+
 ```json
 {
   "total": 120,
@@ -342,7 +382,7 @@ Response (200):
     {
       "id": "uuid",
       "userId": "uuid",
-      "amount": 250.00,
+      "amount": 250.0,
       "paymentMethod": "Credit Card",
       "type": "First Payment",
       "status": "Completed",
@@ -359,13 +399,15 @@ Response (200):
 ```
 
 ### Create Payment
+
 **POST** `/payments`
 
 Request:
+
 ```json
 {
   "userId": "uuid",
-  "amount": 250.00,
+  "amount": 250.0,
   "paymentMethod": "Bank Transfer",
   "type": "First Payment",
   "subscriptionValidUntil": "2024-02-15"
@@ -373,11 +415,12 @@ Request:
 ```
 
 Response (201):
+
 ```json
 {
   "id": "uuid",
   "userId": "uuid",
-  "amount": 250.00,
+  "amount": 250.0,
   "status": "Completed",
   "type": "First Payment",
   "transactionId": "MAN-...",
@@ -386,14 +429,17 @@ Response (201):
 ```
 
 ### Get Payment Details
+
 **GET** `/payments/:paymentId`
 
 Response (200): Returns full payment object with user details
 
 ### Update Payment Status
+
 **PATCH** `/payments/:paymentId/status`
 
 Request:
+
 ```json
 {
   "status": "Completed"
@@ -403,6 +449,7 @@ Request:
 Values: `Pending`, `Completed`, `Failed`, `Refunded`
 
 Response (200):
+
 ```json
 {
   "message": "Payment status updated",
@@ -415,14 +462,17 @@ Response (200):
 ## Referral Endpoints
 
 ### List All Referrals
+
 **GET** `/referrals`
 
 Query Parameters:
+
 - `page` (default: 1)
 - `limit` (default: 20)
 - `paymentStatus` (Not Paid, Paid, Renewed)
 
 Response (200):
+
 ```json
 {
   "total": 250,
@@ -442,9 +492,11 @@ Response (200):
 ```
 
 ### Get User's Referrals
+
 **GET** `/referrals/user/:userId`
 
 Response (200):
+
 ```json
 {
   "referrerId": "uuid",
@@ -457,9 +509,11 @@ Response (200):
 ```
 
 ### Get Referral Tree
+
 **GET** `/referrals/tree/top`
 
 Response (200):
+
 ```json
 [
   {
@@ -476,9 +530,11 @@ Response (200):
 ```
 
 ### Reset Referrals
+
 **POST** `/referrals/:userId/reset`
 
 Response (200):
+
 ```json
 {
   "message": "Referral statistics reset",
@@ -491,14 +547,17 @@ Response (200):
 ## Withdrawal Endpoints
 
 ### List Withdrawals
+
 **GET** `/withdrawals`
 
 Query Parameters:
+
 - `page` (default: 1)
 - `limit` (default: 20)
 - `status` (Pending, Approved, Rejected, Paid)
 
 Response (200):
+
 ```json
 {
   "total": 45,
@@ -506,7 +565,7 @@ Response (200):
     {
       "id": "uuid",
       "userId": "uuid",
-      "amount": 100.00,
+      "amount": 100.0,
       "walletAddress": "0x123...",
       "status": "Pending",
       "requestedAt": "2024-01-15T10:00:00Z",
@@ -521,19 +580,23 @@ Response (200):
 ```
 
 ### Get Pending Withdrawals
+
 **GET** `/withdrawals/pending/list`
 
 Response (200): Returns only pending withdrawals
 
 ### Get Withdrawal Details
+
 **GET** `/withdrawals/:withdrawalId`
 
 Response (200): Returns full withdrawal details
 
 ### Approve Withdrawal
+
 **PATCH** `/withdrawals/:withdrawalId/approve`
 
 Response (200):
+
 ```json
 {
   "message": "Withdrawal approved",
@@ -545,9 +608,11 @@ Response (200):
 ```
 
 ### Reject Withdrawal
+
 **PATCH** `/withdrawals/:withdrawalId/reject`
 
 Request:
+
 ```json
 {
   "reason": "Insufficient funds"
@@ -555,6 +620,7 @@ Request:
 ```
 
 Response (200):
+
 ```json
 {
   "message": "Withdrawal rejected",
@@ -566,9 +632,11 @@ Response (200):
 ```
 
 ### Mark as Paid
+
 **PATCH** `/withdrawals/:withdrawalId/paid`
 
 Request:
+
 ```json
 {
   "transactionHash": "0x123abc..."
@@ -576,6 +644,7 @@ Request:
 ```
 
 Response (200):
+
 ```json
 {
   "message": "Withdrawal marked as paid",
@@ -592,29 +661,31 @@ Response (200):
 ## Commission Endpoints
 
 ### Get User Commissions
+
 **GET** `/commissions/user/:userId`
 
 Response (200):
+
 ```json
 {
   "userId": "uuid",
   "downlineCount": 25,
-  "totalEarnings": 2500.00,
+  "totalEarnings": 2500.0,
   "breakdown": [
     {
       "level": 1,
       "rate": 10,
       "isActive": true,
-      "profitPerPerson": 25.00,
-      "totalProfit": 625.00,
+      "profitPerPerson": 25.0,
+      "totalProfit": 625.0,
       "actualDownlineCount": 25
     },
     {
       "level": 2,
       "rate": 8,
       "isActive": false,
-      "profitPerPerson": 20.00,
-      "totalProfit": 2000.00,
+      "profitPerPerson": 20.0,
+      "totalProfit": 2000.0,
       "actualDownlineCount": 0
     }
   ]
@@ -622,18 +693,22 @@ Response (200):
 ```
 
 ### List Commissions
+
 **GET** `/commissions`
 
 Query Parameters:
+
 - `page`, `limit`
 - `payoutStatus` (Pending, Paid, Pending Reset)
 
 Response (200): Paginated commissions list
 
 ### Get Commission Summary
+
 **GET** `/commissions/summary/all`
 
 Response (200):
+
 ```json
 {
   "totalCommissionsPaid": 50000.00,
@@ -647,15 +722,18 @@ Response (200):
 ## Activity Log Endpoints
 
 ### List Logs
+
 **GET** `/logs`
 
 Query Parameters:
+
 - `page`, `limit`
 - `action` (e.g., UPDATE_USER, APPROVE_WITHDRAWAL)
 - `entityType`
 - `startDate`, `endDate`
 
 Response (200):
+
 ```json
 {
   "total": 500,
@@ -676,17 +754,21 @@ Response (200):
 ```
 
 ### Get Admin's Logs
+
 **GET** `/logs/admin/:adminId`
 
 Query Parameters:
+
 - `limit` (default: 100)
 
 Response (200): Admin's recent actions
 
 ### Get Log Statistics
+
 **GET** `/logs/stats/summary`
 
 Response (200):
+
 ```json
 [
   {
@@ -705,6 +787,7 @@ Response (200):
 ## Error Responses
 
 ### 400 Bad Request
+
 ```json
 {
   "error": "Invalid request data"
@@ -712,6 +795,7 @@ Response (200):
 ```
 
 ### 401 Unauthorized
+
 ```json
 {
   "error": "No token provided"
@@ -719,6 +803,7 @@ Response (200):
 ```
 
 ### 403 Forbidden
+
 ```json
 {
   "error": "Admin access required"
@@ -726,6 +811,7 @@ Response (200):
 ```
 
 ### 404 Not Found
+
 ```json
 {
   "error": "User not found"
@@ -733,6 +819,7 @@ Response (200):
 ```
 
 ### 409 Conflict
+
 ```json
 {
   "error": "Email already exists"
@@ -740,6 +827,7 @@ Response (200):
 ```
 
 ### 500 Internal Server Error
+
 ```json
 {
   "error": "Internal Server Error"
@@ -751,16 +839,19 @@ Response (200):
 ## Rate Limiting
 
 Currently not implemented. Recommended for production:
+
 - 100 requests per minute per IP
 - 10 requests per minute for sensitive endpoints
 
 ## Pagination
 
 All list endpoints support pagination:
+
 - `page`: Current page (default: 1)
 - `limit`: Items per page (default: 20)
 
 Response includes:
+
 ```json
 {
   "total": 150,
@@ -774,6 +865,7 @@ Response includes:
 ## Timestamps
 
 All timestamps are in ISO 8601 format (UTC):
+
 ```
 2024-01-15T10:30:45.123Z
 ```

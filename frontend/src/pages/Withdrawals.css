@@ -129,12 +129,14 @@
   color: #2196f3;
 }
 
-.status-badge.paid, .status-badge.completed {
+.status-badge.paid,
+.status-badge.completed {
   background: rgba(76, 175, 80, 0.2);
   color: #4caf50;
 }
 
-.status-badge.rejected, .status-badge.failed {
+.status-badge.rejected,
+.status-badge.failed {
   background: rgba(244, 67, 54, 0.2);
   color: #f44336;
 }

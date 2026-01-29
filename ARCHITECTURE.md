@@ -312,6 +312,7 @@ User redirected to Dashboard
 ## 🎯 الكيانات الرئيسية (Entities)
 
 ### 1. User Object
+
 ```javascript
 {
   id: 2,
@@ -328,6 +329,7 @@ User redirected to Dashboard
 ```
 
 ### 2. Activity Object
+
 ```javascript
 {
   id: "activity_123",
@@ -344,6 +346,7 @@ User redirected to Dashboard
 ```
 
 ### 3. Threat Object
+
 ```javascript
 {
   id: "threat_456",
@@ -364,6 +367,7 @@ User redirected to Dashboard
 ## 📊 الإحصائيات والمقاييس
 
 ### Request Lifecycle Timing
+
 ```
 Request arrives → <10ms
 CORS check → <1ms
@@ -378,6 +382,7 @@ Response sent → <100ms total ✅
 ```
 
 ### Data Storage
+
 ```
 activities[] max size: 1000 per user
 suspiciousActivities[] max size: unlimited
@@ -452,9 +457,9 @@ Memory usage: ~50MB (in-memory DB)
 6. ✅ **استجابة تلقائية** للهجمات
 
 **هذه البنية تضمن:**
+
 - 🛡️ الحماية من الهجمات الشائعة
 - 📝 تتبع شامل لكل نشاط
 - 🚨 اكتشاف فوري للتهديدات
 - 🔐 البيانات محمية في كل طبقة
 - ⚡ أداء عالي وموثوقية
-

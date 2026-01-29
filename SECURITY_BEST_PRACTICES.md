@@ -16,16 +16,18 @@
 ### ✅ يجب عليك:
 
 #### 1. استخدام كلمات مرور قوية
+
 ```javascript
 // ✅ الصحيح
-const password = "Tr@d!ng#2024$VIP!";  // 14+ حرف، أحرف كبيرة، أرقام، رموز
+const password = "Tr@d!ng#2024$VIP!"; // 14+ حرف، أحرف كبيرة، أرقام، رموز
 
 // ❌ خاطئ
-const password = "123456";  // ضعيفة جداً
-const password = "password123";  // شائعة ومتوقعة
+const password = "123456"; // ضعيفة جداً
+const password = "password123"; // شائعة ومتوقعة
 ```
 
 #### 2. عدم مشاركة كلمات المرور
+
 ```bash
 # ❌ لا تفعل هذا أبداً
 export PASSWORD="admin123456"
@@ -37,6 +39,7 @@ ADMIN_PASSWORD=***
 ```
 
 #### 3. تغيير كلمات المرور دورياً
+
 ```bash
 # كل 30 يوم على الأقل:
 # 1. اذهب إلى لوحة التحكم
@@ -49,13 +52,14 @@ ADMIN_PASSWORD=***
 ```
 
 #### 4. لا تستخدم نفس كلمة المرور على مواقع أخرى
+
 ```bash
 # ❌ خطر جداً
 AdminPassword123 → تستخدمها في:
   - موقع التداول
   - البريد الإلكتروني
   - حساب البنك
-  
+
 # ✅ آمن
 موقع التداول: Tr@d!ng#VIP#2024$
 البريد الإلكتروني: Em@il$Password#2024
@@ -65,25 +69,28 @@ AdminPassword123 → تستخدمها في:
 ### 🔐 إدارة التوكنات
 
 #### 1. الاحتفاظ بالتوكن آمناً
+
 ```javascript
 // ❌ لا تخزن التوكن في localStorage (عرضة للـ XSS)
-localStorage.setItem('token', token);  // خطر!
+localStorage.setItem("token", token); // خطر!
 
 // ✅ استخدم HttpOnly Cookies
 // (أكثر أماناً من localStorage)
-res.cookie('token', token, {
+res.cookie("token", token, {
   httpOnly: true,
-  secure: true,  // HTTPS فقط
-  sameSite: 'strict'
+  secure: true, // HTTPS فقط
+  sameSite: "strict",
 });
 ```
 
 #### 2. تحديث التوكن
+
 ```javascript
 // التوكن ينتهي بعد 7 أيام
 // تحديث تلقائي:
 const tokenAge = Date.now() - tokenCreatedAt;
-if (tokenAge > 6 * 24 * 60 * 60 * 1000) {  // 6 أيام
+if (tokenAge > 6 * 24 * 60 * 60 * 1000) {
+  // 6 أيام
   refreshToken();
 }
 ```
@@ -100,7 +107,7 @@ const password = "mypassword123";
 db.save({ password: password });
 
 // ✅ آمن - مع تشفير
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
 const hashedPassword = await bcrypt.hash(password, 10);
 db.save({ password: hashedPassword });
 ```
@@ -112,9 +119,9 @@ db.save({ password: hashedPassword });
 res.json({
   user: {
     email: user.email,
-    password: user.password,  // لا! لا تفعل هذا أبداً
-    role: user.role
-  }
+    password: user.password, // لا! لا تفعل هذا أبداً
+    role: user.role,
+  },
 });
 
 // ✅ آمن - بدون بيانات حساسة
@@ -123,7 +130,7 @@ res.json({
     email: user.email,
     role: user.role,
     // كلمة المرور غير مُرسلة
-  }
+  },
 });
 ```
 
@@ -163,26 +170,26 @@ aws s3 cp backup.tar.gz \
 const validateEmail = (email) => {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!regex.test(email)) {
-    throw new Error('Invalid email format');
+    throw new Error("Invalid email format");
   }
   if (email.length > 100) {
-    throw new Error('Email too long');
+    throw new Error("Email too long");
   }
 };
 
 // ✅ التحقق من كلمة المرور
 const validatePassword = (password) => {
   if (password.length < 8) {
-    throw new Error('Password too short (minimum 8)');
+    throw new Error("Password too short (minimum 8)");
   }
   if (!/[A-Z]/.test(password)) {
-    throw new Error('Password must contain uppercase');
+    throw new Error("Password must contain uppercase");
   }
   if (!/[0-9]/.test(password)) {
-    throw new Error('Password must contain numbers');
+    throw new Error("Password must contain numbers");
   }
   if (!/[!@#$%^&*]/.test(password)) {
-    throw new Error('Password must contain special chars');
+    throw new Error("Password must contain special chars");
   }
 };
 ```
@@ -192,9 +199,9 @@ const validatePassword = (password) => {
 ```javascript
 // في mock-server.js
 app.use((req, res, next) => {
-  if (process.env.NODE_ENV === 'production') {
-    if (req.header('x-forwarded-proto') !== 'https') {
-      res.redirect(`https://${req.header('host')}${req.url}`);
+  if (process.env.NODE_ENV === "production") {
+    if (req.header("x-forwarded-proto") !== "https") {
+      res.redirect(`https://${req.header("host")}${req.url}`);
       return;
     }
   }
@@ -252,25 +259,25 @@ app.use((req, res, next) => {
 const suspiciousPatterns = {
   // SQL Injection
   sqlInjection: /"'|--|;|\/\*|\*\/|xp_|sp_/i,
-  
+
   // XSS
   xss: /<script|onclick|<iframe|eval\(/i,
-  
+
   // Path Traversal
   pathTraversal: /\.\.\\/i,
-  
+
   // Command Injection
-  commandInjection: /[;&|`$()]/
+  commandInjection: /[;&|`$()]/,
 };
 
 // استخدام:
 const isSuspicious = (input) => {
   for (let pattern in suspiciousPatterns) {
     if (suspiciousPatterns[pattern].test(input)) {
-      return true;  // تنبيه! مشبوه
+      return true; // تنبيه! مشبوه
     }
   }
-  return false;  // آمن
+  return false; // آمن
 };
 ```
 
@@ -281,24 +288,24 @@ const isSuspicious = (input) => {
 const suspiciousBehavior = {
   // محاولات دخول متعددة فاشلة
   multipleFailed: (user) => user.failedAttempts >= 5,
-  
+
   // دخول من عناوين IP مختلفة في وقت قصير
   locationJump: (user) => {
     const lastLogin = user.lastLogin;
     const now = Date.now();
-    return (now - lastLogin) < 60000;  // أقل من دقيقة
+    return now - lastLogin < 60000; // أقل من دقيقة
   },
-  
+
   // محاولة الوصول إلى حسابات أخرى
   unauthorizedAccess: (user, targetUserId) => {
-    return user.id !== targetUserId && user.role !== 'admin';
+    return user.id !== targetUserId && user.role !== "admin";
   },
-  
+
   // تحويلات كبيرة غير معتادة
   unusualTransaction: (user, amount) => {
     const avgTransaction = user.averageTransaction;
-    return amount > (avgTransaction * 5);  // 5 أضعاف المتوسط
-  }
+    return amount > avgTransaction * 5; // 5 أضعاف المتوسط
+  },
 };
 ```
 
@@ -436,31 +443,31 @@ UPDATE users SET forcePasswordChange = true WHERE id = USER_ID;
 const healthySecurityMetrics = {
   // عدد الأنشطة المريبة يجب أن يكون قليلاً جداً
   suspiciousActivities: {
-    perDay: 0,           // مثالي: 0
-    threshold: 10,       // إنذار: أكثر من 10
-    critical: 50         // خطر: أكثر من 50
+    perDay: 0, // مثالي: 0
+    threshold: 10, // إنذار: أكثر من 10
+    critical: 50, // خطر: أكثر من 50
   },
-  
+
   // معدل الفشل في تسجيل الدخول
   loginFailureRate: {
-    acceptable: '1-2%',
-    warning: '5%',
-    critical: '10%+'
+    acceptable: "1-2%",
+    warning: "5%",
+    critical: "10%+",
   },
-  
+
   // عدد IPs المحظورة
   blockedIPs: {
-    normal: '0-5',
-    elevated: '5-20',
-    critical: '20+'
+    normal: "0-5",
+    elevated: "5-20",
+    critical: "20+",
   },
-  
+
   // متوسط وقت الاستجابة
   responseTime: {
-    good: '<200ms',
-    acceptable: '<500ms',
-    slow: '>1s'
-  }
+    good: "<200ms",
+    acceptable: "<500ms",
+    slow: ">1s",
+  },
 };
 ```
 
@@ -469,6 +476,7 @@ const healthySecurityMetrics = {
 ## 🚀 نصائح لتحسين الأمان
 
 ### 1. استخدم VPN على الشبكات العامة
+
 ```bash
 # عند الوصول من مقهى أو مكان عام
 # استخدم VPN دائماً
@@ -476,6 +484,7 @@ const healthySecurityMetrics = {
 ```
 
 ### 2. تفعيل المصادقة الثنائية (2FA)
+
 ```javascript
 // قريباً في النسخة القادمة
 // الخطوات:
@@ -485,6 +494,7 @@ const healthySecurityMetrics = {
 ```
 
 ### 3. المراجعة الدورية للنشاط
+
 ```bash
 # كل أسبوع: تحقق من نشاط حسابك
 # ابحث عن:
@@ -494,6 +504,7 @@ const healthySecurityMetrics = {
 ```
 
 ### 4. الحفاظ على البرامج محدثة
+
 ```bash
 # قم بتحديث npm packages شهرياً
 cd backend
@@ -531,6 +542,7 @@ npm update     # تحديث الحزم
 ## 🎓 الخلاصة
 
 **تذكر:**
+
 - 🔐 الأمان أولوية #1
 - 🕐 بدأ المراقبة الآن
 - 📝 سجل كل شيء

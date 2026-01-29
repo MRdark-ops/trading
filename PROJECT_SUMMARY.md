@@ -9,6 +9,7 @@ A comprehensive, production-ready Admin Dashboard for the Trading Platform has b
 ## 📦 Deliverables
 
 ### 1. **Backend (Node.js/Express)**
+
 - ✅ RESTful API with 30+ endpoints
 - ✅ PostgreSQL database with 6 models
 - ✅ JWT authentication and authorization
@@ -19,6 +20,7 @@ A comprehensive, production-ready Admin Dashboard for the Trading Platform has b
 - ✅ Database seeding scripts
 
 ### 2. **Frontend (React + Vite)**
+
 - ✅ Professional dark gold theme
 - ✅ Responsive admin dashboard
 - ✅ Dashboard with real-time metrics
@@ -28,6 +30,7 @@ A comprehensive, production-ready Admin Dashboard for the Trading Platform has b
 - ✅ Recharts integration for visualizations
 
 ### 3. **Database Schema**
+
 - ✅ Users (with UUID, status, types)
 - ✅ Payments (tracking first payment vs renewal)
 - ✅ Referrals (relationship tracking)
@@ -36,6 +39,7 @@ A comprehensive, production-ready Admin Dashboard for the Trading Platform has b
 - ✅ Admin Logs (activity auditing)
 
 ### 4. **Documentation**
+
 - ✅ Comprehensive README.md
 - ✅ Setup Guide (SETUP.md)
 - ✅ Complete API Documentation (API.md)
@@ -46,6 +50,7 @@ A comprehensive, production-ready Admin Dashboard for the Trading Platform has b
 ## 🎯 Features Implemented
 
 ### User Management
+
 - [x] View all users with pagination and filters
 - [x] Detailed user profiles
 - [x] Edit user information
@@ -55,6 +60,7 @@ A comprehensive, production-ready Admin Dashboard for the Trading Platform has b
 - [x] Adjust balance manually
 
 ### Dashboard & Analytics
+
 - [x] Total users, active users, members count
 - [x] Revenue tracking
 - [x] Commission payouts tracking
@@ -63,6 +69,7 @@ A comprehensive, production-ready Admin Dashboard for the Trading Platform has b
 - [x] Top referrer leaderboard
 
 ### Payment Management
+
 - [x] List and filter payments
 - [x] Create manual payments
 - [x] Track payment methods
@@ -71,6 +78,7 @@ A comprehensive, production-ready Admin Dashboard for the Trading Platform has b
 - [x] Auto-upgrade to Internal Member on renewal
 
 ### Referral System
+
 - [x] Unique referral codes per user
 - [x] Referral tracking and statistics
 - [x] Conversion rate calculation
@@ -79,6 +87,7 @@ A comprehensive, production-ready Admin Dashboard for the Trading Platform has b
 - [x] Reset referral statistics
 
 ### Commission System (5-Level MLM)
+
 - [x] Level 1: 10% commission
 - [x] Level 2: 8% commission
 - [x] Level 3: 6% commission
@@ -88,6 +97,7 @@ A comprehensive, production-ready Admin Dashboard for the Trading Platform has b
 - [x] Detailed breakdown per user
 
 ### Withdrawal Management
+
 - [x] Real-time pending withdrawals list
 - [x] Approve/Reject functionality
 - [x] Mark as paid with transaction hash
@@ -96,6 +106,7 @@ A comprehensive, production-ready Admin Dashboard for the Trading Platform has b
 - [x] Wallet address validation
 
 ### Security
+
 - [x] JWT authentication (24h expiry)
 - [x] Admin-only access control
 - [x] Comprehensive activity logging
@@ -105,6 +116,7 @@ A comprehensive, production-ready Admin Dashboard for the Trading Platform has b
 - [x] Input validation with Joi
 
 ### Database & API
+
 - [x] PostgreSQL with Sequelize ORM
 - [x] Automatic model synchronization
 - [x] 30+ API endpoints
@@ -196,6 +208,7 @@ c:\Users\admin\Downloads\tradnig\
 ## 🚀 Quick Start
 
 ### 1. Backend Setup
+
 ```bash
 cd backend
 npm install
@@ -205,6 +218,7 @@ npm run dev
 ```
 
 ### 2. Frontend Setup
+
 ```bash
 cd frontend
 npm install
@@ -212,11 +226,13 @@ npm run dev
 ```
 
 ### 3. Docker Setup (Alternative)
+
 ```bash
 docker-compose up
 ```
 
 ### Default Credentials (After Seed)
+
 - **Email**: admin@tradingdz.com
 - **Password**: Admin@123456
 
@@ -224,14 +240,14 @@ docker-compose up
 
 ## 🔑 Key Statistics
 
-| Component | Count |
-|-----------|-------|
-| Database Models | 6 |
-| API Endpoints | 30+ |
-| Frontend Pages | 8 |
-| UI Components | 1+ |
-| Lines of Backend Code | 1,500+ |
-| Lines of Frontend Code | 800+ |
+| Component              | Count  |
+| ---------------------- | ------ |
+| Database Models        | 6      |
+| API Endpoints          | 30+    |
+| Frontend Pages         | 8      |
+| UI Components          | 1+     |
+| Lines of Backend Code  | 1,500+ |
+| Lines of Frontend Code | 800+   |
 
 ---
 
@@ -246,34 +262,42 @@ docker-compose up
 ✅ Input Validation  
 ✅ SQL Injection Protection (Sequelize ORM)  
 ✅ Error Handling  
-✅ 2FA Ready  
+✅ 2FA Ready
 
 ---
 
 ## 📊 API Endpoints Summary
 
 ### Auth (4 endpoints)
+
 - Login, Register, Get Current User, Logout
 
 ### Dashboard (3 endpoints)
+
 - Overview, Growth Data, Top Referrers
 
 ### Users (7 endpoints)
+
 - List, Detail, Update, Change Status, Change Type, Reset Earnings, Adjust Balance
 
 ### Payments (4 endpoints)
+
 - List, Create, Detail, Update Status
 
 ### Referrals (4 endpoints)
+
 - List, User Referrals, Referral Tree, Reset
 
 ### Withdrawals (6 endpoints)
+
 - List, Pending, Detail, Approve, Reject, Mark as Paid
 
 ### Commissions (3 endpoints)
+
 - User Commissions, List, Summary
 
 ### Logs (3 endpoints)
+
 - List, Admin Logs, Statistics
 
 ---
@@ -293,19 +317,20 @@ docker-compose up
 
 The 5-level MLM commission system automatically calculates:
 
-| Level | People | Rate | Profit/Person |
-|-------|--------|------|---------------|
-| 1 | 1-10 | 10% | $25 |
-| 2 | 11-100 | 8% | $20 |
-| 3 | 101-1,000 | 6% | $15 |
-| 4 | 1,001-10,000 | 4% | $10 |
-| 5 | 10,001-100,000 | 2% | $5 |
+| Level | People         | Rate | Profit/Person |
+| ----- | -------------- | ---- | ------------- |
+| 1     | 1-10           | 10%  | $25           |
+| 2     | 11-100         | 8%   | $20           |
+| 3     | 101-1,000      | 6%   | $15           |
+| 4     | 1,001-10,000   | 4%   | $10           |
+| 5     | 10,001-100,000 | 2%   | $5            |
 
 ---
 
 ## 🔧 Technologies Used
 
 ### Backend
+
 - Node.js 18+
 - Express.js
 - PostgreSQL
@@ -318,6 +343,7 @@ The 5-level MLM commission system automatically calculates:
 - Morgan (Logging)
 
 ### Frontend
+
 - React 18
 - Vite
 - React Router v6
@@ -327,6 +353,7 @@ The 5-level MLM commission system automatically calculates:
 - Lucide React Icons
 
 ### DevOps
+
 - Docker & Docker Compose
 - PostgreSQL 15
 - Redis (optional)
@@ -376,21 +403,25 @@ The 5-level MLM commission system automatically calculates:
 ## 🛠 Troubleshooting
 
 ### Port in Use
+
 ```bash
 lsof -i :5000
 kill -9 <PID>
 ```
 
 ### Database Connection Issues
+
 - Verify PostgreSQL is running
 - Check credentials in .env
 - Ensure database exists
 
 ### CORS Errors
+
 - Update frontend URL in backend cors config
 - Verify API_BASE in frontend .env
 
 ### Token Issues
+
 - Check JWT_SECRET is set
 - Verify token expiration (24h default)
 - Check Authorization header format
@@ -400,6 +431,7 @@ kill -9 <PID>
 ## 📞 Support
 
 For detailed information:
+
 1. Check SETUP.md for installation
 2. Review API.md for endpoint documentation
 3. Check individual component files for implementation details
@@ -418,6 +450,6 @@ Proprietary - All Rights Reserved
 **Status**: COMPLETED ✅  
 **Deployment Ready**: YES  
 **Documentation**: COMPREHENSIVE  
-**Testing**: READY FOR QA  
+**Testing**: READY FOR QA
 
 The Trading Platform Admin Dashboard is fully developed and ready for deployment!

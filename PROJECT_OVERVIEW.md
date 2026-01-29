@@ -19,7 +19,7 @@
 ✅ Provide real-time earnings tracking and analytics  
 ✅ Create exclusive community through Telegram  
 ✅ Process USDT cryptocurrency payments  
-✅ Maintain secure, transparent, and compliant operations  
+✅ Maintain secure, transparent, and compliant operations
 
 ---
 
@@ -27,31 +27,31 @@
 
 ### For Customers
 
-| Feature | Description |
-|---------|-------------|
-| **User Registration** | Easy signup with email verification |
-| **USDT Payment** | Pay 250 USDT for subscription via Binance |
-| **Dashboard** | Real-time view of referrals and earnings |
-| **Referral Links** | Unique shareable links for recruitment |
-| **Multi-Level Commissions** | Earn from 5 levels of network |
-| **Earnings Tracking** | Detailed breakdown by level and date |
-| **Withdrawals** | Request and track balance withdrawals |
-| **Telegram Access** | Exclusive channel for active members |
-| **Analytics** | Charts and metrics for performance |
+| Feature                     | Description                               |
+| --------------------------- | ----------------------------------------- |
+| **User Registration**       | Easy signup with email verification       |
+| **USDT Payment**            | Pay 250 USDT for subscription via Binance |
+| **Dashboard**               | Real-time view of referrals and earnings  |
+| **Referral Links**          | Unique shareable links for recruitment    |
+| **Multi-Level Commissions** | Earn from 5 levels of network             |
+| **Earnings Tracking**       | Detailed breakdown by level and date      |
+| **Withdrawals**             | Request and track balance withdrawals     |
+| **Telegram Access**         | Exclusive channel for active members      |
+| **Analytics**               | Charts and metrics for performance        |
 
 ### For Admins
 
-| Feature | Description |
-|---------|-------------|
-| **User Management** | View, edit, and manage user accounts |
-| **Payment Verification** | Verify USDT transactions from blockchain |
+| Feature                     | Description                               |
+| --------------------------- | ----------------------------------------- |
+| **User Management**         | View, edit, and manage user accounts      |
+| **Payment Verification**    | Verify USDT transactions from blockchain  |
 | **Subscription Activation** | Activate users after payment verification |
-| **Withdrawal Management** | Review and approve withdrawal requests |
-| **Commission Management** | Monitor and adjust commission structures |
-| **Analytics Dashboard** | Real-time metrics and user statistics |
-| **Activity Logging** | Detailed audit trail of all actions |
-| **Referral Network** | Visualize user network and hierarchy |
-| **Revenue Reporting** | Financial reports and insights |
+| **Withdrawal Management**   | Review and approve withdrawal requests    |
+| **Commission Management**   | Monitor and adjust commission structures  |
+| **Analytics Dashboard**     | Real-time metrics and user statistics     |
+| **Activity Logging**        | Detailed audit trail of all actions       |
+| **Referral Network**        | Visualize user network and hierarchy      |
+| **Revenue Reporting**       | Financial reports and insights            |
 
 ---
 
@@ -100,6 +100,7 @@
 ## 💾 Database Schema
 
 ### Users Table
+
 ```sql
 CREATE TABLE users (
   id UUID PRIMARY KEY,
@@ -124,6 +125,7 @@ CREATE TABLE users (
 ```
 
 ### Payments Table
+
 ```sql
 CREATE TABLE payments (
   id UUID PRIMARY KEY,
@@ -140,6 +142,7 @@ CREATE TABLE payments (
 ```
 
 ### Referrals Table
+
 ```sql
 CREATE TABLE referrals (
   id UUID PRIMARY KEY,
@@ -153,6 +156,7 @@ CREATE TABLE referrals (
 ```
 
 ### Commissions Table
+
 ```sql
 CREATE TABLE commissions (
   id UUID PRIMARY KEY,
@@ -171,17 +175,18 @@ CREATE TABLE commissions (
 
 The platform implements a sophisticated 5-level MLM system:
 
-| Level | Rate | Requirements | Earning Potential |
-|-------|------|--------------|------------------|
-| 1 (Direct) | 10% | 1-10 referrals | $25-$250 |
-| 2 | 8% | 11-100 referrals | $200-$18,000 |
-| 3 | 6% | 101-1000 referrals | $1,500-$1.35M |
-| 4 | 4% | 1001-10000 referrals | $10K-$90M |
-| 5 | 2% | 10001+ referrals | Unlimited |
+| Level      | Rate | Requirements         | Earning Potential |
+| ---------- | ---- | -------------------- | ----------------- |
+| 1 (Direct) | 10%  | 1-10 referrals       | $25-$250          |
+| 2          | 8%   | 11-100 referrals     | $200-$18,000      |
+| 3          | 6%   | 101-1000 referrals   | $1,500-$1.35M     |
+| 4          | 4%   | 1001-10000 referrals | $10K-$90M         |
+| 5          | 2%   | 10001+ referrals     | Unlimited         |
 
 ### Commission Calculation Example
 
 User A registers:
+
 - Level 1: Direct referral (10%) → $25 per referral
 - Level 2: Referrals of Level 1 (8%) → $200 per referral
 - Level 3-5: Indirect referrals (6%, 4%, 2%)
@@ -213,11 +218,13 @@ Execute Protected Action
 ```
 
 ### Password Security
+
 - **Hashing**: bcrypt with salt rounds = 10
 - **Requirements**: Minimum 8 characters, mixed case, numbers
 - **Reset**: Email-based token with 1-hour expiry
 
 ### API Security
+
 - **CORS**: Restricted to trusted domains
 - **Rate Limiting**: 100 requests per 15 minutes per IP
 - **Input Validation**: Server-side validation for all inputs
@@ -344,6 +351,7 @@ Analytics & Reporting
 ## 🚀 Deployment Architecture
 
 ### Development Environment
+
 ```
 Local Machine
 ├─ Backend: http://localhost:5000
@@ -353,6 +361,7 @@ Local Machine
 ```
 
 ### Staging Environment
+
 ```
 Cloud Server (AWS/GCP/Azure)
 ├─ Backend: https://api-staging.tradingdz.com
@@ -362,6 +371,7 @@ Cloud Server (AWS/GCP/Azure)
 ```
 
 ### Production Environment
+
 ```
 Cloud Infrastructure
 ├─ Backend: https://api.tradingdz.com (Docker)
@@ -378,19 +388,20 @@ Cloud Infrastructure
 
 The platform tracks these KPIs:
 
-| Metric | Target | Current |
-|--------|--------|---------|
-| Monthly Active Users | 50K+ | Growing |
-| Payment Conversion Rate | 30%+ | Tracking |
-| Avg Referrals per User | 5+ | Tracking |
-| Total Network Value | $10M+ | Growing |
-| User Retention (30d) | 70%+ | Monitoring |
+| Metric                  | Target | Current    |
+| ----------------------- | ------ | ---------- |
+| Monthly Active Users    | 50K+   | Growing    |
+| Payment Conversion Rate | 30%+   | Tracking   |
+| Avg Referrals per User  | 5+     | Tracking   |
+| Total Network Value     | $10M+  | Growing    |
+| User Retention (30d)    | 70%+   | Monitoring |
 
 ---
 
 ## 🛠️ Technology Stack
 
 ### Frontend (Customer Website)
+
 - **React 18** - UI library
 - **Vite** - Build tool
 - **React Router v6** - Routing
@@ -400,12 +411,14 @@ The platform tracks these KPIs:
 - **CSS3** - Styling
 
 ### Frontend (Admin Dashboard)
+
 - **React 18**
 - **React Admin** - Admin template
 - **Material-UI** - Component library
 - **Chart.js** - Advanced charts
 
 ### Backend
+
 - **Node.js** - Runtime
 - **Express.js** - Framework
 - **Sequelize** - ORM
@@ -415,6 +428,7 @@ The platform tracks these KPIs:
 - **dotenv** - Environment config
 
 ### DevOps
+
 - **Docker** - Containerization
 - **Docker Compose** - Orchestration
 - **Git** - Version control
@@ -470,33 +484,39 @@ trading_dz/
 ## 🔄 API Endpoints
 
 ### Authentication
+
 - `POST /api/auth/register` - Register new user
 - `POST /api/auth/login` - User login
 - `POST /api/auth/logout` - User logout
 - `POST /api/auth/refresh-token` - Refresh JWT token
 
 ### Users
+
 - `GET /api/users/:id` - Get user profile
 - `PUT /api/users/:id` - Update user profile
 - `DELETE /api/users/:id` - Delete user account
 
 ### Payments
+
 - `POST /api/payments` - Create payment
 - `GET /api/payments` - Get user payments
 - `GET /api/payments/:id` - Get payment details
 - `PUT /api/payments/:id/verify` - Verify payment (Admin)
 
 ### Referrals
+
 - `GET /api/referrals` - Get user referrals
 - `GET /api/referrals/:id` - Get referral details
 - `GET /api/referrals/tree` - Get referral tree
 
 ### Commissions
+
 - `GET /api/commissions` - Get user commissions
 - `GET /api/commissions/breakdown` - Commission breakdown by level
 - `POST /api/commissions/calculate` - Recalculate commissions (Admin)
 
 ### Admin
+
 - `GET /api/admin/users` - List all users
 - `GET /api/admin/payments` - List all payments
 - `GET /api/admin/dashboard` - Admin dashboard stats
@@ -524,6 +544,7 @@ For developers working on this project:
 ## 📞 Team & Support
 
 ### Development Team Roles
+
 - **Project Manager** - Overall planning and coordination
 - **Backend Developer** - API and database
 - **Frontend Developer** - Customer website and admin dashboard
@@ -533,6 +554,7 @@ For developers working on this project:
 - **Telegram Bot Developer** - Bot and channel integration
 
 ### Support Channels
+
 - **Email**: support@tradingdz.com
 - **Telegram**: @TradingDZSupport
 - **WhatsApp**: +1-234-567-8900
@@ -555,6 +577,7 @@ For developers working on this project:
 ## ✅ Quality Assurance
 
 ### Testing Strategy
+
 - **Unit Tests**: Each module tested independently
 - **Integration Tests**: Component interactions
 - **E2E Tests**: Full user flows
@@ -562,6 +585,7 @@ For developers working on this project:
 - **Security Testing**: Vulnerability scans
 
 ### Code Standards
+
 - **Linting**: ESLint for consistent code
 - **Formatting**: Prettier for code formatting
 - **Pre-commit Hooks**: Validate before committing

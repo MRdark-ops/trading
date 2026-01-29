@@ -1,9 +1,11 @@
 # نظام الأمان الشامل - Gold Trading DZ VIP Platform
+
 # Complete Security System Documentation
 
 ## 📋 نظرة عامة
 
 تم تطبيق نظام أمان متقدم يتضمن:
+
 - 🔐 مصادقة آمنة مع التوكن
 - 🚨 نظام كشف الهجمات والأنشطة المريبة
 - 📊 نظام تسجيل شامل للأنشطة
@@ -17,17 +19,21 @@
 ## 🔐 1. نظام المصادقة (Authentication)
 
 ### الميزات:
+
 ✅ **التوكن الآمن**
+
 - توكن فريد لكل مستخدم
 - انتهاء الصلاحية بعد 7 أيام
 - إمكانية إلغاء التوكن (Revocation)
 
 ✅ **منع Brute Force Attacks**
+
 - تحديد 5 محاولات فاشلة في الدقيقة
 - قفل الحساب لمدة 15 دقيقة بعد 5 محاولات فاشلة
 - تسجيل كل محاولة فاشلة
 
 ✅ **التحقق من المدخلات**
+
 - التحقق من صحة البريد الإلكتروني
 - التحقق من قوة كلمة المرور (8 أحرف على الأقل)
 - تنظيف المدخلات من الأحرف الخطرة
@@ -93,44 +99,44 @@ Authorization: Bearer 7h8e9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z
 
 ### الأنشطة المسجلة:
 
-| النشاط | الكود | الوصف |
-|--------|------|-------|
-| تسجيل دخول | LOGIN | تسجيل دخول المستخدم |
-| تسجيل حساب | REGISTRATION | إنشاء حساب جديد |
-| تسجيل خروج | LOGOUT | تسجيل خروج المستخدم |
-| دفع | PAYMENT | عملية دفع |
-| سحب | WITHDRAWAL | طلب سحب |
-| إحالة | REFERRAL | إحالة جديدة |
-| عمولة | COMMISSION | كسب عمولة |
-| محاولة خاطئة | FAILED_LOGIN | محاولة دخول فاشلة |
-| نشاط مريب | SUSPICIOUS | نشاط غير عادي |
+| النشاط       | الكود        | الوصف               |
+| ------------ | ------------ | ------------------- |
+| تسجيل دخول   | LOGIN        | تسجيل دخول المستخدم |
+| تسجيل حساب   | REGISTRATION | إنشاء حساب جديد     |
+| تسجيل خروج   | LOGOUT       | تسجيل خروج المستخدم |
+| دفع          | PAYMENT      | عملية دفع           |
+| سحب          | WITHDRAWAL   | طلب سحب             |
+| إحالة        | REFERRAL     | إحالة جديدة         |
+| عمولة        | COMMISSION   | كسب عمولة           |
+| محاولة خاطئة | FAILED_LOGIN | محاولة دخول فاشلة   |
+| نشاط مريب    | SUSPICIOUS   | نشاط غير عادي       |
 
 ### الوصول إلى السجلات:
 
 ```javascript
 // الحصول على أنشطة مستخدم محدد
-GET /api/security/user-activities/1
-Authorization: Bearer <admin-token>
-
-// الاستجابة
-{
-  "success": true,
-  "userId": 1,
-  "activities": [
-    {
-      "id": "a1b2c3d4e5f6g7h8",
-      "action": "LOGIN",
-      "timestamp": "2024-12-29T15:30:45.123Z",
-      "details": {
-        "email": "user@tradingdz.com",
-        "ip": "192.168.1.100",
-        "userAgent": "Mozilla/5.0..."
+GET / api / security / user - activities / 1;
+Authorization: Bearer <
+  admin - token >
+  // الاستجابة
+  {
+    success: true,
+    userId: 1,
+    activities: [
+      {
+        id: "a1b2c3d4e5f6g7h8",
+        action: "LOGIN",
+        timestamp: "2024-12-29T15:30:45.123Z",
+        details: {
+          email: "user@tradingdz.com",
+          ip: "192.168.1.100",
+          userAgent: "Mozilla/5.0...",
+        },
+        fingerprint: "a7f3e2d1c5b8a9f4...",
       },
-      "fingerprint": "a7f3e2d1c5b8a9f4..."
-    }
-  ],
-  "total": 145
-}
+    ],
+    total: 145,
+  };
 ```
 
 ---
@@ -140,16 +146,19 @@ Authorization: Bearer <admin-token>
 ### الأنواع المكتشفة:
 
 #### 🔴 تهديدات حرجة (CRITICAL)
+
 - محاولات SQL Injection
 - محاولات XSS
 - محاولات CSRF
 
 #### 🟠 تهديدات عالية (HIGH)
+
 - محاولات تسجيل دخول متعددة فاشلة
 - محاولات وصول إداري غير مصرح
 - IP مشبوهة
 
 #### 🟡 تهديدات متوسطة (MEDIUM)
+
 - تسجيل دخول من موقع جغرافي مختلف
 - تسجيل دخول في وقت غير عادي
 - جهاز جديد
@@ -158,30 +167,30 @@ Authorization: Bearer <admin-token>
 
 ```javascript
 // الحصول على الأنشطة المريبة
-GET /api/security/suspicious-activities
-Authorization: Bearer <admin-token>
-
-// الاستجابة
-{
-  "success": true,
-  "activities": [
-    {
-      "id": "suspicious_id_123",
-      "email": "attacker@unknown.com",
-      "ip": "203.0.113.45",
-      "type": "MULTIPLE_FAILED_LOGINS",
-      "severity": "HIGH",
-      "details": {
-        "attempts": 5,
-        "lockedUntil": "2024-12-29T15:45:45Z"
+GET / api / security / suspicious - activities;
+Authorization: Bearer <
+  admin - token >
+  // الاستجابة
+  {
+    success: true,
+    activities: [
+      {
+        id: "suspicious_id_123",
+        email: "attacker@unknown.com",
+        ip: "203.0.113.45",
+        type: "MULTIPLE_FAILED_LOGINS",
+        severity: "HIGH",
+        details: {
+          attempts: 5,
+          lockedUntil: "2024-12-29T15:45:45Z",
+        },
+        timestamp: "2024-12-29T15:30:45Z",
       },
-      "timestamp": "2024-12-29T15:30:45Z"
-    }
-  ],
-  "total": 23,
-  "critical": 2,
-  "high": 8
-}
+    ],
+    total: 23,
+    critical: 2,
+    high: 8,
+  };
 ```
 
 ---
@@ -222,11 +231,11 @@ Authorization: Bearer <valid-token>
 
 ### الحدود:
 
-| النوع | الحد | الفترة | الإجراء |
-|-------|------|--------|---------|
-| API العام | 100 | دقيقة | رفع الطلب |
-| تسجيل الدخول | 5 | دقيقة | قفل الحساب |
-| التسجيل | 3 | ساعة | رفع الطلب |
+| النوع        | الحد | الفترة | الإجراء    |
+| ------------ | ---- | ------ | ---------- |
+| API العام    | 100  | دقيقة  | رفع الطلب  |
+| تسجيل الدخول | 5    | دقيقة  | قفل الحساب |
+| التسجيل      | 3    | ساعة   | رفع الطلب  |
 
 ### مثال:
 
@@ -281,31 +290,31 @@ Authorization: Bearer <token>
 
 ```javascript
 // حالة الأمان
-GET /api/security/status
-Authorization: Bearer <admin-token>
-
-// الاستجابة
-{
-  "success": true,
-  "status": {
-    "totalActivities": 1234,
-    "suspiciousActivities": 23,
-    "blockedIPs": 5,
-    "criticalThreats": 2,
-    "highThreat": 8,
-    "activeSessions": 45,
-    "revokedTokens": 12
-  },
-  "recentThreats": [
-    {
-      "id": "threat_id",
-      "type": "MULTIPLE_FAILED_LOGINS",
-      "severity": "HIGH",
-      "email": "attacker@unknown.com",
-      "ip": "203.0.113.45"
-    }
-  ]
-}
+GET / api / security / status;
+Authorization: Bearer <
+  admin - token >
+  // الاستجابة
+  {
+    success: true,
+    status: {
+      totalActivities: 1234,
+      suspiciousActivities: 23,
+      blockedIPs: 5,
+      criticalThreats: 2,
+      highThreat: 8,
+      activeSessions: 45,
+      revokedTokens: 12,
+    },
+    recentThreats: [
+      {
+        id: "threat_id",
+        type: "MULTIPLE_FAILED_LOGINS",
+        severity: "HIGH",
+        email: "attacker@unknown.com",
+        ip: "203.0.113.45",
+      },
+    ],
+  };
 ```
 
 ---
@@ -358,20 +367,23 @@ Content-Type: application/json
 ### ما يجب تغييره:
 
 1. **التشفير:**
+
    ```javascript
    // استخدم bcrypt لتشفير كلمات المرور
-   const bcrypt = require('bcrypt');
+   const bcrypt = require("bcrypt");
    const hashedPassword = await bcrypt.hash(password, 10);
    ```
 
 2. **قاعدة البيانات:**
+
    ```javascript
    // استخدم MongoDB أو PostgreSQL
-   const mongoose = require('mongoose');
+   const mongoose = require("mongoose");
    // بدلاً من قاعدة البيانات في الذاكرة
    ```
 
 3. **متغيرات البيئة:**
+
    ```javascript
    // .env
    DB_URL=mongodb+srv://user:pass@cluster.mongodb.net
@@ -380,17 +392,18 @@ Content-Type: application/json
    ```
 
 4. **HTTPS:**
+
    ```javascript
    // استخدم شهادات SSL/TLS
-   const https = require('https');
-   const fs = require('fs');
-   const cert = fs.readFileSync('cert.pem');
+   const https = require("https");
+   const fs = require("fs");
+   const cert = fs.readFileSync("cert.pem");
    ```
 
 5. **Logging:**
    ```javascript
    // استخدم Winston أو Bunyan
-   const winston = require('winston');
+   const winston = require("winston");
    // احفظ السجلات في ملفات آمنة
    ```
 
@@ -399,6 +412,7 @@ Content-Type: application/json
 ## 📞 الدعم والمساعدة
 
 للأسئلة أو المشاكل الأمنية:
+
 - 📧 security@tradingdz.com
 - 🐛 Report vulnerability: bug@tradingdz.com
 - 📋 Check logs: `/api/security/status`
