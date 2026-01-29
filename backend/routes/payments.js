@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Payment = require('../models/Payment');
 const User = require('../models/User');
-const Referral = require('../models/Referral');
 const { authMiddleware, adminMiddleware } = require('../middleware/auth');
 const { logAdminAction } = require('../utils/logger');
 
