@@ -69,8 +69,10 @@ router.get('/:withdrawalId', authMiddleware, adminMiddleware, async (req, res) =
     }
 
     res.json(withdrawal);
+    return null;
   } catch (err) {
     res.status(500).json({ error: err.message });
+    return null;
   }
 });
 
@@ -158,8 +160,10 @@ router.patch('/:withdrawalId/approve', authMiddleware, adminMiddleware, async (r
     );
 
     res.json({ message: 'Withdrawal approved', withdrawal });
+    return null;
   } catch (err) {
     res.status(500).json({ error: err.message });
+    return null;
   }
 });
 
@@ -195,8 +199,10 @@ router.patch('/:withdrawalId/reject', authMiddleware, adminMiddleware, async (re
     );
 
     res.json({ message: 'Withdrawal rejected', withdrawal });
+    return null;
   } catch (err) {
     res.status(500).json({ error: err.message });
+    return null;
   }
 });
 
@@ -241,8 +247,10 @@ router.patch('/:withdrawalId/paid', authMiddleware, adminMiddleware, async (req,
     );
 
     res.json({ message: 'Withdrawal marked as paid', withdrawal });
+    return null;
   } catch (err) {
     res.status(500).json({ error: err.message });
+    return null;
   }
 });
 
@@ -273,6 +281,41 @@ router.patch('/:withdrawalId/status', authMiddleware, adminMiddleware, async (re
       await withdrawal.update({
         status: status,
         paidAt: new Date(),
+        transactionHash
+      });
+
+      await logAdminAction(
+        req.userId,
+        'UPDATE_WITHDRAWAL_STATUS',
+        'Withdrawal',
+        withdrawalId,
+        { status: oldStatus },
+        { status: status, reason, transactionHash },
+        req
+      );
+    } else {
+      await withdrawal.update({
+        status,
+        rejectionReason: reason
+      });
+      await logAdminAction(
+        req.userId,
+        'UPDATE_WITHDRAWAL_STATUS',
+        'Withdrawal',
+        withdrawalId,
+        { status: oldStatus },
+        { status, reason },
+        req
+      );
+    }
+
+    res.json({ message: 'Withdrawal status updated', withdrawal });
+    return null;
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+    return null;
+  }
+});
         transactionHash: transactionHash || withdrawal.transactionHash
       });
     } else if ((status === 'Rejected' || status === 'Failed') && (oldStatus !== 'Rejected' && oldStatus !== 'Failed')) {

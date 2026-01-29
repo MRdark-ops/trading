@@ -43,6 +43,7 @@ router.get('/user/:userId', authMiddleware, adminMiddleware, async (req, res) =>
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
+  return null;
 });
 
 // Reset referral statistics
@@ -69,8 +70,10 @@ router.post('/:userId/reset', authMiddleware, adminMiddleware, async (req, res) 
     );
 
     res.json({ message: 'Referral statistics reset', deletedCount });
+    return null;
   } catch (err) {
     res.status(500).json({ error: err.message });
+    return null;
   }
 });
 
