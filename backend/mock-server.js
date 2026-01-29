@@ -58,6 +58,7 @@ app.use((req, res, next) => {
   }
 
   next();
+  return null;
 });
 
 // Rate Limiting Middleware
@@ -72,6 +73,7 @@ app.use((req, res, next) => {
   }
 
   next();
+  return null;
 });
 
 // Digital Fingerprint Middleware
@@ -103,6 +105,7 @@ const verifyToken = (req, res, next) => {
 
   req.user = validation.data;
   next();
+  return null;
 };
 
 // Admin Only Middleware
@@ -122,6 +125,7 @@ const adminOnly = (req, res, next) => {
   }
 
   next();
+  return null;
 };
 
 // Mock database - Enhanced with multiple users and admins
@@ -425,7 +429,6 @@ app.post('/api/auth/register', (req, res) => {
     // Log activity
     const token = tokenManager.generateToken(newUserId, 'user');
     activityLogger.log(newUserId, 'REGISTRATION', { email, ip: req.clientIP }, req.fingerprint.hash);
-    
     console.log('✅ User registered successfully:', { id: newUserId, email, ip: req.clientIP });
     
     res.status(201).json({
@@ -448,6 +451,7 @@ app.post('/api/auth/register', (req, res) => {
       error: 'Registration failed'
     });
   }
+  return null;
 });
 
 app.post('/api/auth/login', (req, res) => {
@@ -476,6 +480,8 @@ app.post('/api/auth/login', (req, res) => {
     const validation = InputValidator.validateRequest({ email, password });
     if (!validation.isValid) {
       securityMonitor.addSuspiciousActivity(email, ip, 'INVALID_INPUT', { errors: validation.errors });
+      return null;
+    }
       return res.status(400).json({
         success: false,
         error: validation.errors[0]
@@ -599,6 +605,7 @@ app.post('/api/payment/submit', (req, res) => {
     paymentId: 'PAY' + Math.random().toString(36).substr(2, 9).toUpperCase(),
     status: 'Pending'
   });
+  return null;
 });
 
 app.get('/api/payment/wallet-address', (req, res) => {
@@ -609,6 +616,7 @@ app.get('/api/payment/wallet-address', (req, res) => {
     amount: 25,
     purpose: 'Monthly Subscription'
   });
+  return null;
 });
 
 // ============================================
@@ -685,11 +693,13 @@ app.get('/api/withdrawal/requests', verifyToken, (req, res) => {
       success: true,
       withdrawals: userWithdrawals
     });
+    return null;
   } catch (err) {
     res.status(500).json({
       success: false,
       error: 'Failed to fetch withdrawals'
     });
+    return null;
   }
 });
 
@@ -789,7 +799,6 @@ app.get('/api/subscription/status', verifyToken, (req, res) => {
     });
   }
 });
-
 // Get All Withdrawal Requests (Admin Only)
 app.get('/api/admin/withdrawal-requests', verifyToken, adminOnly, (req, res) => {
   try {
@@ -811,6 +820,7 @@ app.get('/api/admin/withdrawal-requests', verifyToken, adminOnly, (req, res) => 
       error: 'Failed to fetch withdrawal requests'
     });
   }
+  return null;
 });
 
 // Approve Withdrawal (Admin Only)
@@ -842,6 +852,7 @@ app.post('/api/admin/withdrawal/approve/:withdrawalId', verifyToken, adminOnly, 
       error: 'Failed to approve withdrawal'
     });
   }
+  return null;
 });
 
 // Reject Withdrawal (Admin Only)
@@ -1237,6 +1248,7 @@ app.get('/api/security/status', verifyToken, adminOnly, (req, res) => {
     },
     recentThreats: suspiciousActivities.slice(-10)
   });
+  return null;
 });
 
 // Get user fingerprint info
@@ -1268,6 +1280,7 @@ app.get('/api/security/fingerprint/:userId', verifyToken, adminOnly, (req, res) 
     totalUniqueFingerprints: fingerprints.length,
     suspiciousSignIns: userActivities.filter(a => a.action === 'LOGIN').length
   });
+  return null;
 });
 
 // Clear suspicious activity logs
@@ -1278,6 +1291,7 @@ app.post('/api/security/clear-logs', verifyToken, adminOnly, (req, res) => {
     success: true,
     message: 'Suspicious activity logs cleared'
   });
+  return null;
 });
 
 // Block IP manually
@@ -1297,6 +1311,7 @@ app.post('/api/security/block-ip', verifyToken, adminOnly, (req, res) => {
     success: true,
     message: `IP ${ip} has been blocked`
   });
+  return null;
 });
 
 // Get token info
@@ -1316,11 +1331,13 @@ app.get('/api/security/tokens/:token', verifyToken, adminOnly, (req, res) => {
     token: token.substring(0, 16) + '...',
     info: tokenInfo
   });
+  return null;
 });
 
 // Health check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', message: 'Mock API server running' });
+  return null;
 });
 
 // Root endpoint with API info

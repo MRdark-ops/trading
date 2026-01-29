@@ -12,8 +12,10 @@ const authMiddleware = (req, res, next) => {
     req.userId = decoded.userId;
     req.isAdmin = decoded.isAdmin;
     next();
+    return null;
   } catch (err) {
     res.status(401).json({ error: 'Invalid token' });
+    return null;
   }
 };
 
@@ -22,6 +24,7 @@ const adminMiddleware = (req, res, next) => {
     return res.status(403).json({ error: 'Admin access required' });
   }
   next();
+  return null;
 };
 
 module.exports = { authMiddleware, adminMiddleware };

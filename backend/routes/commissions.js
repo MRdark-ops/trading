@@ -31,8 +31,10 @@ router.get('/user/:userId', authMiddleware, adminMiddleware, async (req, res) =>
       totalEarnings,
       breakdown
     });
+    return null;
   } catch (err) {
     res.status(500).json({ error: err.message });
+    return null;
   }
 });
 

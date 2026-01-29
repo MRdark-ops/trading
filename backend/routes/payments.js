@@ -85,8 +85,10 @@ router.post('/', authMiddleware, adminMiddleware, async (req, res) => {
     );
 
     res.status(201).json(payment);
+    return null;
   } catch (err) {
     res.status(500).json({ error: err.message });
+    return null;
   }
 });
 
@@ -106,8 +108,10 @@ router.get('/:paymentId', authMiddleware, adminMiddleware, async (req, res) => {
     }
 
     res.json(payment);
+    return null;
   } catch (err) {
     res.status(500).json({ error: err.message });
+    return null;
   }
 });
 
@@ -140,8 +144,10 @@ router.patch('/:paymentId/status', authMiddleware, adminMiddleware, async (req, 
     );
 
     res.json({ message: 'Payment status updated', payment });
+    return null;
   } catch (err) {
     res.status(500).json({ error: err.message });
+    return null;
   }
 });
 

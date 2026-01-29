@@ -81,8 +81,10 @@ router.get('/:userId', authMiddleware, adminMiddleware, async (req, res) => {
       payments,
       referrals
     });
+    return null;
   } catch (err) {
     res.status(500).json({ error: err.message });
+    return null;
   }
 });
 
@@ -114,8 +116,10 @@ router.put('/:userId', authMiddleware, adminMiddleware, async (req, res) => {
       message: 'User updated successfully',
       user: user.toJSON()
     });
+    return null;
   } catch (err) {
     res.status(500).json({ error: err.message });
+    return null;
   }
 });
 
@@ -148,8 +152,10 @@ router.patch('/:userId/type', authMiddleware, adminMiddleware, async (req, res) 
     );
 
     res.json({ message: 'User type updated', user });
+    return null;
   } catch (err) {
     res.status(500).json({ error: err.message });
+    return null;
   }
 });
 
@@ -182,8 +188,10 @@ router.patch('/:userId/status', authMiddleware, adminMiddleware, async (req, res
     );
 
     res.json({ message: 'User status updated', user });
+    return null;
   } catch (err) {
     res.status(500).json({ error: err.message });
+    return null;
   }
 });
 
@@ -216,8 +224,10 @@ router.post('/:userId/reset-earnings', authMiddleware, adminMiddleware, async (r
     );
 
     res.json({ message: 'User earnings reset', user });
+    return null;
   } catch (err) {
     res.status(500).json({ error: err.message });
+    return null;
   }
 });
 
@@ -248,8 +258,10 @@ router.post('/:userId/adjust-balance', authMiddleware, adminMiddleware, async (r
     );
 
     res.json({ message: 'Balance adjusted', user });
+    return null;
   } catch (err) {
     res.status(500).json({ error: err.message });
+    return null;
   }
 });
 
@@ -284,8 +296,10 @@ router.post('/:userId/message', authMiddleware, adminMiddleware, async (req, res
     );
 
     res.json({ message: 'Message sent successfully' });
+    return null;
   } catch (err) {
     res.status(500).json({ error: err.message });
+    return null;
   }
 });
 
